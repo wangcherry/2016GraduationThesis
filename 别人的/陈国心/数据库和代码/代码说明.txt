@@ -1,0 +1,4 @@
+管理账户 登录名：admin  密码：admin
+用户登录  登录名：111 密码：111
+
+后台管理员登录路径为：//localhost:8080/swzlxt/admin
