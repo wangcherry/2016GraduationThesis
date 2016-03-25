@@ -1,0 +1,108 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td { margin:0; padding:0; } 
+body, button, input, select, textarea { font:12px/1.5tahoma, arial, \5b8b\4f53; } 
+h1, h2, h3, h4, h5, h6{ font-size:100%; } 
+address, cite, dfn, em, var { font-style:normal; } 
+code, kbd, pre, samp { font-family:couriernew, courier, monospace; } 
+small{ font-size:12px; } 
+ul, ol { list-style:none; } 
+a { text-decoration:none; } 
+a:hover { text-decoration:underline; } 
+sup { vertical-align:text-top; } 
+sub{ vertical-align:text-bottom; } 
+legend { color:#000; } 
+fieldset, img { border:0; } 
+button, input, select, textarea { font-size:100%; } 
+table { border-collapse:collapse; border-spacing:0; } 
+
+body{
+	background: #fff url(../images/bgimg.jpg) center top no-repeat;
+}
+header{
+	width: 1090px;
+	height: 100px;
+	margin: 0 auto 60px;
+	overflow: hidden;
+}
+header a{
+	color: #ffffff;
+}
+header a:hover{
+	text-decoration: none;
+}
+header .logo{
+	width: 250px;
+	height: 80px;
+	padding-top: 20px;
+	display: block;
+	float: left;
+	background-color: #85bad9;
+	text-align: center;
+	font-size: 24px;
+	cursor: default;
+}
+header .loginInfo{
+	height: 25px;
+	line-height: 25px;
+	display: block;
+	float: right;
+	margin: 10px 0 0 5px;
+}
+header .login{
+	width:50px;
+	border: 1px solid #0f6b92;
+	border-radius: 3px;
+	color: #85bad9;
+	text-align: center;
+}
+header .outLoginWrap a{
+	color: #85bad9;
+}
+header .outLoginWrap a:hover{
+	text-decoration: underline;
+}
+
+/*index的样式*/
+section{
+	width: 1090px;
+	margin: 0 auto;
+}
+section table{
+	margin-bottom: 30px;
+	width: 100%;
+}
+section table.prescriptions{
+	border: 1px solid #7f7f7f;
+}
+section caption{
+	text-align: left;
+	color: #ff7f27;
+	height: 35px;
+}
+section table tr{
+	line-height: 25px;
+}
+section table.patient tr td.textR{
+	text-align: right;
+}
+section table.prescriptions tr td{
+	text-align: center;
+}
+section table.result caption{
+	height: 15px;
+}
+
+/*login的样式*/
+section .loginForm{
+	width: 
+}
+footer{
+	width: 100%;
+	height: 70px;
+	background-color: #02557f;
+	color: #ffffff;
+	line-height: 70px;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	opacity: 0.9;
+}
