@@ -62,9 +62,6 @@
 	header{
 		margin-bottom: 0.5em;
 	}
-	section .loginForm{
-		margin-top: 8em;
-	}
 	.logo a {
 		font-size: 1.6em;
 	}
@@ -154,20 +151,28 @@ header .login a.loginBtn:hover{
 	color: #0c6c92;
 }
 
-section table{
-	margin-bottom: 1em;
-}
+
 section table th{
 	text-align: center;
 }
 section caption{
 	color: #ff7f27;
 }
+section table.table-noborder td{
+	border-top: none;
+	text-align: left;
+}
+.table-striped > tbody > tr:nth-of-type(odd) {
+	opacity: 0.7;
+}
 
 section .loginForm{
-	margin-top: 10em;
+	margin-top: 8em;
 	color: #ff7f27;
 	font-size: 1em;
+}
+section .loginForm .loginBtn{
+	margin-top: 2em;
 }
 
 .about {
