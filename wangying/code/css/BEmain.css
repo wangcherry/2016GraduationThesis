@@ -10,7 +10,7 @@
 }
 @media (max-width:2000px){
 	header{
-		margin-bottom: 2em;
+		margin-bottom: 9em;
 	}
 }
 @media (max-width:1280px){
@@ -117,57 +117,46 @@
 }
 
 
-header .logo{
-	background-color: #85bad9;
+header .login{
+	padding-top: 7px;
 }
 header .logo a{
 	display: block;
 	cursor: default;
-	text-decoration: none;
-	color: #fff;
-	font-family: 'Archivo Narrow', sans-serif;
-	padding:0.5em;
-	font-size:2em;
-}
-header .logo a:hover{
-	text-decoration: none;
-}
-header .login{
-	padding-top: 7px;
 }
 header .login a{
 	text-decoration: none;
-	color: #85bad9;
+	color: #ffffff;
 }
 header .login a:hover{
 	text-decoration: underline;
 }
 header .login a.loginBtn{
-	border-color: #85bad9;
+	border-color: #0e689d;
+	color: #0e689d;
 }
 header .login a.loginBtn:hover{
 	text-decoration: none;
-	background-color: #fff;
-	color: #0c6c92;
+	color: #084b73;
 }
 
-
+section{
+	background-color: #fff;
+	padding:0.5em;
+}
 section table th{
 	text-align: center;
 }
 section caption{
-	color: #ff7f27;
+	color: #0c557f;
 }
 section table.table-noborder td{
 	border-top: none;
-	text-align: left;
-}
-.table-striped > tbody > tr:nth-of-type(odd) {
-	opacity: 0.7;
 }
 
+
 section .loginForm{
-	margin-top: 8em;
+	margin: 5em;
 	color: #ff7f27;
 	font-size: 1em;
 }
@@ -190,5 +179,6 @@ footer{
 	padding:3em 0;
 	background-color: #02557f;
 	color: #ffffff;
+	font-size: 1em;
 	opacity: 0.9;
 }
