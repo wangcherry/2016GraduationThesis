@@ -16,17 +16,23 @@ body{
 	padding: 0;
 	margin: 0;
 }
-.m-banner-login{
+
+.banner{
 	background:url(../../images/bgimg.jpg) no-repeat top center;
-	min-height: 400px;
-}
-.m-banner-login header .logo{
-	display: inline-block;
+	padding-bottom: 3em;
 }
 
-.m-banner-login section{
+header{
+	margin-bottom: 1em;
+}
+header a.logo{
+	display: inline-block;
+	cursor: default;
+}
+
+section{
 	background-color: #fff;
-	padding:0.5em;
+	padding: .5em;
 }
 
 .about {
@@ -36,7 +42,6 @@ body{
     color: #F26F62; 
     font-family: 'Archivo Narrow', sans-serif;
 }
-
 
 footer{
 	padding:2em 0;
