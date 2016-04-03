@@ -9,6 +9,7 @@
   "author": "wangying",
   "license": "ISC",
   "dependencies": {
-    "quagga": "^0.10.0"
+    "quagga": "^0.10.0",
+    "webpack": "^1.12.14"
   }
 }

@@ -1,3 +1,47 @@
-#aaa{
-	background-color: red;
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: @screen-sm-min) {
+
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: @screen-md-min) {
+
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: @screen-lg-min) {
+
+}
+body{
+	padding: 0;
+	margin: 0;
+}
+.m-banner-login{
+	background:url(../../images/bgimg.jpg) no-repeat top center;
+	min-height: 400px;
+}
+.m-banner-login header .logo{
+	display: inline-block;
+}
+
+.m-banner-login section{
+	background-color: #fff;
+	padding:0.5em;
+}
+
+.about {
+	padding: 1em 0;
+}
+.about h3 {
+    color: #F26F62; 
+    font-family: 'Archivo Narrow', sans-serif;
+}
+
+
+footer{
+	padding:2em 0;
+	background-color: #02557f;
+	color: #ffffff;
+	font-size: 1em;
+	opacity: 0.9;
 }
