@@ -15,7 +15,6 @@
 	</script>
 	<!-- //for-mobile-apps -->
 	<link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css" media="all">
-	<link rel="stylesheet" type="text/css" href="styles/css/bootstrap-responsive.css">
 	<!-- for-font-family -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
@@ -32,7 +31,7 @@
 			<header class="row">
 				<div class="col-xs-6 pull-left">
 					<a href="javascript:;" class="logo">
-						<img src="images/logo.jpg" class="img-responsive center-block" alt="验证取药" title="验证取药">
+						<img src="images/logo.jpg" class="img-responsive" alt="验证取药" title="验证取药">
 					</a>
 				</div>
 				<div class="col-xs-6 pull-right text-right login">
@@ -42,8 +41,8 @@
 			</header>
 			<!-- //header -->
 			<!-- section -->
-			<section class="row">
-				<table class="table table-noborder ">
+			<section>
+				<table class="table table-noborder">
 					<caption class="text-left capt-color">病人信息：</caption>
 					<tr>
 					  <td></td>
@@ -56,20 +55,32 @@
 					  <td></td>
 					  <td class="text-right">年龄：</td>
 					  <td>18</td>
-					  <td class="text-right">身份证号：</td>
+					  <td class="text-right">药单号：</td>
 					  <td>360235466812546872</td>
 					</tr>
 				</table>
-				<table class="text-center table table-striped table-bordered">
-					<caption class="text-left capt-color">药单信息：</caption>
+				<table class="table table-noborder">
+					<caption class="text-left capt-color">医生信息：</caption>
 					<tr>
-					  <th>编号</th>
-					  <th>药名名称</th>
-					  <th>药品条形码</th>
-					  <th>价格</th>
-					  <th>数量</th>
-					  <th>药品厂家</th>
-					  <th>备注</th>
+					  <td></td>
+					  <td class="text-right">姓名：</td>
+					  <td>宋偶吧</td>
+					  <td class="text-right">性别：</td>
+					  <td>男</td>
+					  <td class="text-right">科室：</td>
+					  <td>口腔科</td>
+					</tr>
+				</table>
+				<table class="text-center table table-striped table-bordered">
+					<caption class="text-left capt-color capt-bottom">药单信息：</caption>
+					<tr>
+					  <th class="text-center">编号</th>
+					  <th class="text-center">药名名称</th>
+					  <th class="text-center">药品条形码</th>
+					  <th class="text-center">价格</th>
+					  <th class="text-center">数量</th>
+					  <th class="text-center">药品厂家</th>
+					  <th class="text-center">备注</th>
 					</tr>
 					<tr>
 					  <td>1</td>
@@ -113,7 +124,7 @@
 
 
 
-	<div id="scanWindow"></div>
+	<!-- <div id="scanWindow"></div> -->
 	<script type="text/javascript" src="scripts/jquery-2.2.2.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap.js"></script>
 	<script type="text/javascript" src="../../../dist/index.bundle.js"></script>

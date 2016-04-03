@@ -1,16 +1,17 @@
 /* 小屏幕（平板，大于等于 768px） */
-@media (min-width: @screen-sm-min) {
-
+@media (min-width: 768px) {
 }
 
 /* 中等屏幕（桌面显示器，大于等于 992px） */
-@media (min-width: @screen-md-min) {
-
+@media (min-width: 992px) {
 }
 
 /* 大屏幕（大桌面显示器，大于等于 1200px） */
-@media (min-width: @screen-lg-min) {
+@media (min-width: 1200px) {
+}
 
+/* 超大屏幕（大桌面显示器，大于等于 2000px） */
+@media (min-width:2000px){
 }
 body{
 	padding: 0;
@@ -19,11 +20,10 @@ body{
 
 .banner{
 	background:url(../../images/bgimg.jpg) no-repeat top center;
-	padding-bottom: 3em;
 }
 
 header{
-	margin-bottom: 1em;
+	margin-bottom: 4em;
 }
 header a.logo{
 	display: inline-block;
@@ -33,6 +33,7 @@ header a.logo{
 section{
 	background-color: #fff;
 	padding: .5em;
+	margin-bottom: 4em;
 }
 
 .about {
