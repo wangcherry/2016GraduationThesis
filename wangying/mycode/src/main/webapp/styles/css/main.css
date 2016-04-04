@@ -42,6 +42,8 @@ section{
 .about h3 {
     color: #F26F62; 
     font-family: 'Archivo Narrow', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
 }
 
 footer{

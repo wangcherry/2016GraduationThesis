@@ -12,10 +12,10 @@
 /* 中等屏幕（桌面显示器，大于等于 992px） */
 @media (min-width: 992px) {
 	header{
-		margin-bottom: 8em;
+		margin-bottom: 7em;
 	}
 	section{
-		margin-bottom: 8em;
+		margin-bottom: 7em;
 		padding: 3em 0.5em;
 	}
 }
@@ -23,22 +23,22 @@
 /* 大屏幕（大桌面显示器，大于等于 1200px） */
 @media (min-width: 1200px) {
 	header{
+		margin-bottom: 8em;
+	}
+	section{
+		margin-bottom: 8em;
+		padding: 3.5em 0.5em;
+	}
+}
+
+/* 超大屏幕（大桌面显示器，大于等于 1500px） */
+@media (min-width:1500px){
+	header{
 		margin-bottom: 10em;
 	}
 	section{
 		margin-bottom: 10em;
 		padding: 4em 0.5em;
-	}
-}
-
-/* 超大屏幕（大桌面显示器，大于等于 2000px） */
-@media (min-width:2000px){
-	header{
-		margin-bottom: 12em;
-	}
-	section{
-		margin-bottom: 12em;
-		padding: 6em 0.5em;
 	}
 }
 .m-banner-login .login-form{

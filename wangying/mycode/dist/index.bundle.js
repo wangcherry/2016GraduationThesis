@@ -47,25 +47,14 @@
 	var Quagga = __webpack_require__(1);
 
 	$(function() {
-	    var resultCollector = Quagga.ResultCollector.create({
-	        capture: true,
-	        capacity: 20,
-	        blacklist: [{code: "2167361334", format: "i2of5"}],
-	        filter: function(codeResult) {
-	            // only store results which match this constraint
-	            // e.g.: codeResult
-	            return true;
-	        }
-	    });
 	    var App = {
 	        init : function() {
 	            var self = this;
-
 	            Quagga.init(this.state, function(err) {
 	                if (err) {
 	                    return self.handleError(err);
 	                }
-	                Quagga.registerResultCollector(resultCollector);
+	                $("span.code").html('');
 	                App.attachListeners();
 	                Quagga.start();
 	            });
@@ -75,98 +64,20 @@
 	        },
 	        attachListeners: function() {
 	            var self = this;
-
 	            $(".js-controls").on("click", "button.js-stop", function(e) {
 	                e.preventDefault();
 	                Quagga.stop();
-	                // self._printCollectedResults();
+	                $("span.code").html('');
+	                $("#interactive").hide();
 	            });
-
-	            // $(".js-controls .reader-config-group").on("change", "input, select", function(e) {
-	            //     e.preventDefault();
-	            //     var $target = $(e.target),
-	            //         value = $target.attr("type") === "checkbox" ? $target.prop("checked") : $target.val(),
-	            //         name = $target.attr("name"),
-	            //         state = self._convertNameToState(name);
-
-	            //     console.log("Value of "+ state + " changed to " + value);
-	            //     self.setState(state, value);
-	            // });
 	        },
-	        // _printCollectedResults: function() {
-	        //     var results = resultCollector.getResults(),
-	        //         $ul = $("#result_strip ul.collector");
-
-	        //     // results.forEach(function(result) {
-	        //     //     var $li = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-
-	        //     //     $li.find("img").attr("src", result.frame);
-	        //     //     $li.find("h4.code").html(result.codeResult.code + " (" + result.codeResult.format + ")");
-	        //     //     $ul.prepend($li);
-	        //     // });
-	        // },
-	        // _accessByPath: function(obj, path, val) {
-	        //     var parts = path.split('.'),
-	        //         depth = parts.length,
-	        //         setter = (typeof val !== "undefined") ? true : false;
-
-	        //     return parts.reduce(function(o, key, i) {
-	        //         if (setter && (i + 1) === depth) {
-	        //             o[key] = val;
-	        //         }
-	        //         return key in o ? o[key] : {};
-	        //     }, obj);
-	        // },
-	        // _convertNameToState: function(name) {
-	        //     return name.replace("_", ".").split("-").reduce(function(result, value) {
-	        //         return result + value.charAt(0).toUpperCase() + value.substring(1);
-	        //     });
-	        // },
-	        // detachListeners: function() {
-	        //     $(".js-controls").off("click", "button.js-stop");
-	        //     // $(".js-controls .reader-config-group").off("change", "input, select");
-	        // },
-	        // setState: function(path, value) {
-	        //     var self = this;
-
-	        //     if (typeof self._accessByPath(self.inputMapper, path) === "function") {
-	        //         value = self._accessByPath(self.inputMapper, path)(value);
-	        //     }
-
-	        //     self._accessByPath(self.state, path, value);
-
-	        //     console.log(JSON.stringify(self.state));
-	        //     App.detachListeners();
-	        //     Quagga.stop();
-	        //     App.init();
-	        // },
-	        // inputMapper: {
-	        //     inputStream: {
-	        //         constraints: function(value){
-	        //             var values = value.split('x');
-	        //             return {
-	        //                 width: parseInt(values[0]),
-	        //                 height: parseInt(values[1]),
-	        //                 facing: "environment"
-	        //             }
-	        //         }
-	        //     },
-	        //     numOfWorkers: function(value) {
-	        //         return parseInt(value);
-	        //     },
-	        //     decoder: {
-	        //         readers: function(value) {
-	        //             return [value + "_reader"];
-	        //         }
-	        //     }
-	        // },
 	        state: {
 	            inputStream: {
 	                type : "LiveStream",
 	                constraints: {
 	                    width: 640,
 	                    height: 480,
-	                    facing: "environment" // or user
+	                    facing: "environment"
 	                }
 	            },
 	            locator: {
@@ -175,7 +86,7 @@
 	            },
 	            numOfWorkers: 4,
 	            decoder: {
-	                readers : [ "ean_reader"]
+	                readers : ["ean_reader"]
 	            },
 	            locate: true
 	        },
@@ -184,6 +95,7 @@
 
 	    $(".js-controls").on("click", "button.js-start", function(e) {
 	        App.init();
+	        $("#interactive").show();
 	    });
 
 	    Quagga.onProcessed(function(result) {
@@ -225,8 +137,8 @@
 	        }
 	    });
 
-	});
 
+	});
 
 /***/ },
 /* 1 */

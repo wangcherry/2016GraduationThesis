@@ -1,3 +1,5 @@
+@charset "UTF-8";
+
 /* 小屏幕（平板，大于等于 768px） */
 @media (min-width: 768px) {
 	header{
@@ -10,32 +12,35 @@
 
 /* 中等屏幕（桌面显示器，大于等于 992px） */
 @media (min-width: 992px) {
-	header{
-		margin-bottom: 4em;
-	}
-	section{
-		margin-bottom: 4em;
-	}
+  header{
+    margin-bottom: 2em;
+  }
+  section{
+    margin-bottom: 2em;
+  }
 }
 
 /* 大屏幕（大桌面显示器，大于等于 1200px） */
 @media (min-width: 1200px) {
-	header{
-		margin-bottom: 6em;
-	}
-	section{
-		margin-bottom: 6em;
-	}
+  header{
+    margin-bottom: 4em;
+  }
+  section{
+    margin-bottom: 4em;
+  }
 }
 
-/* 超大屏幕（大桌面显示器，大于等于 2000px） */
-@media (min-width:2000px){
-	header{
-		margin-bottom: 8em;
-	}
-	section{
-		margin-bottom: 8em;
-	}
+/* 超大屏幕（大桌面显示器，大于等于 1500px） */
+@media (min-width: 1500px) {
+  header{
+    margin-bottom: 6em;
+  }
+  section{
+    margin-bottom: 6em;
+  }
+}
+.banner{
+  background-color: #9DC1D9;
 }
 .m-banner-index .login{
 	padding-top: .5em;
@@ -59,9 +64,121 @@
 .m-banner-index section .table-noborder td{
 	border-top: none;
 }
-.m-banner-index section table .capt-color{
+.m-banner-index section .fontsize td{
+  padding: 2px 1px;
+}
+.m-banner-index section .capt-color{
 	color: #0c557f;
 }
-.m-banner-index section table .capt-bottom{
+.m-banner-index section .capt-bottom{
 	margin-bottom: .5em;
+}
+
+
+#container {
+  margin: 20px auto;
+  padding: 10px;
+}
+
+#interactive.viewport {
+  width: 640px;
+  height: 480px;
+  display: none;
+  margin-top: .5em;
+}
+#interactive.viewport canvas, video {
+  width: 640px;
+  height: 480px;
+}
+#interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  margin-left: -640px;
+}
+
+#result_strip {
+  margin: 10px 0;
+  border-top: 1px solid #EEE;
+  border-bottom: 1px solid #EEE;
+  padding: 10px 0;
+  display: none;
+}
+#result_strip > ul {
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+  width: auto;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+#result_strip > ul > li {
+  display: inline-block;
+  vertical-align: middle;
+  width: 160px;
+}
+#result_strip > ul > li .thumbnail {
+  padding: 5px;
+  margin: 4px;
+  border: 1px dashed #CCC;
+}
+#result_strip > ul > li .thumbnail img {
+  max-width: 140px;
+}
+#result_strip > ul > li .thumbnail .caption {
+  white-space: normal;
+}
+#result_strip > ul > li .thumbnail .caption h4 {
+  text-align: center;
+  word-wrap: break-word;
+  height: 40px;
+  margin: 0px;
+}
+#result_strip > ul:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+@media (max-width: 603px) {
+  #container {
+    margin: 10px auto;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  #container form.voucher-form input.voucher-code {
+    width: 180px;
+  }
+}
+@media (max-width: 603px) {
+  #interactive.viewport {
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+  }
+  #interactive.viewport canvas, video {
+    margin-top: -50px;
+    width: 300px;
+    height: 400px;
+  }
+  #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+    margin-left: -300px;
+  }
+
+  #result_strip {
+    margin-top: 5px;
+    padding-top: 5px;
+  }
+  #result_strip ul.thumbnails > li {
+    width: 150px;
+  }
+  #result_strip ul.thumbnails > li .thumbnail .imgWrapper {
+    width: 130px;
+    height: 130px;
+    overflow: hidden;
+  }
+  #result_strip ul.thumbnails > li .thumbnail .imgWrapper img {
+    margin-top: -25px;
+    width: 130px;
+    height: 180px;
+  }
 }
