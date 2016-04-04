@@ -75,33 +75,37 @@
 }
 
 
-#container {
+.scan-warp {
+  margin: 0 auto 20px;
+  padding: 10px;
+}
+.search-drug{
   margin: 0 auto 20px;
   padding: 10px;
 }
 
-#interactive.viewport {
+.interactive.viewport {
   width: 640px;
   height: 480px;
   display: none;
   margin-top: .5em;
 }
-#interactive.viewport canvas, video {
+.interactive.viewport canvas, video {
   width: 640px;
   height: 480px;
 }
-#interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+.interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
   margin-left: -640px;
 }
 
-#result_strip {
+.interactive {
   margin: 10px 0;
   border-top: 1px solid #EEE;
   border-bottom: 1px solid #EEE;
   padding: 10px 0;
   display: none;
 }
-#result_strip > ul {
+.interactive > ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -110,73 +114,79 @@
   overflow-y: hidden;
   white-space: nowrap;
 }
-#result_strip > ul > li {
+.interactive > ul > li {
   display: inline-block;
   vertical-align: middle;
   width: 160px;
 }
-#result_strip > ul > li .thumbnail {
+.interactive > ul > li .thumbnail {
   padding: 5px;
   margin: 4px;
   border: 1px dashed #CCC;
 }
-#result_strip > ul > li .thumbnail img {
+.interactive > ul > li .thumbnail img {
   max-width: 140px;
 }
-#result_strip > ul > li .thumbnail .caption {
+.interactive > ul > li .thumbnail .caption {
   white-space: normal;
 }
-#result_strip > ul > li .thumbnail .caption h4 {
+.interactive > ul > li .thumbnail .caption h4 {
   text-align: center;
   word-wrap: break-word;
   height: 40px;
   margin: 0px;
 }
-#result_strip > ul:after {
+.interactive > ul:after {
   content: "";
   display: table;
   clear: both;
 }
 
 @media (max-width: 603px) {
-  #container {
+  .scan-warp {
     margin: 10px auto;
     -moz-box-shadow: none;
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  #container form.voucher-form input.voucher-code {
+  .search-drug{
+    margin: 10px auto;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+  .scan-warp form.voucher-form input.voucher-code {
     width: 180px;
   }
 }
 @media (max-width: 603px) {
-  #interactive.viewport {
+  .interactive.viewport {
     width: 300px;
     height: 300px;
     overflow: hidden;
   }
-  #interactive.viewport canvas, video {
+  .interactive.viewport canvas, video {
     margin-top: -50px;
     width: 300px;
     height: 400px;
   }
-  #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  .interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
     margin-left: -300px;
   }
 
-  #result_strip {
+  .interactive {
     margin-top: 5px;
     padding-top: 5px;
   }
-  #result_strip ul.thumbnails > li {
+  .interactive ul.thumbnails > li {
     width: 150px;
   }
-  #result_strip ul.thumbnails > li .thumbnail .imgWrapper {
+  .interactive ul.thumbnails > li .thumbnail .imgWrapper {
     width: 130px;
     height: 130px;
     overflow: hidden;
   }
-  #result_strip ul.thumbnails > li .thumbnail .imgWrapper img {
+  .interactive ul.thumbnails > li .thumbnail .imgWrapper img {
     margin-top: -25px;
     width: 130px;
     height: 180px;

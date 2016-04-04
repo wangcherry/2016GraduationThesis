@@ -22,7 +22,7 @@ $(function() {
                 e.preventDefault();
                 Quagga.stop();
                 $("span.code").html('');
-                $("#interactive").hide();
+                $(".js-scan-warp").hide();
             });
         },
         state: {
@@ -49,7 +49,7 @@ $(function() {
 
     $(".js-controls").on("click", "button.js-start", function(e) {
         App.init();
-        $("#interactive").show();
+        $(".js-interactive").show();
     });
 
     Quagga.onProcessed(function(result) {
@@ -87,7 +87,7 @@ $(function() {
             $node.find("img").attr("src", canvas.toDataURL());
             $node.find("h4.code").html(code);
             $("span.code").html(code);
-            $("#result_strip ul.thumbnails").prepend($node);
+            $(".js-interactive ul.thumbnails").prepend($node);
         }
     });
 

@@ -40,19 +40,34 @@
 				</div>
 			</header>
 			<!-- //header -->
-			<section id="container" class="text-center">
+			<!-- section : 扫描药单前显示 -->
+			<section class="text-center scan-warp js-scan-warp">
 		        <div class="js-controls">
-	                <button class="js-start start">扫一扫</button>&nbsp;&nbsp;&nbsp;
-	                <button class="js-stop stop">Stop</button>
+	                <button type="button" class="btn btn-info js-start ">扫一扫</button>&nbsp;&nbsp;&nbsp;
+	                <button type="button" class="btn btn-info js-stop">Stop</button>
 		        </div>
 		        <span class="code"></span>
-		        <div id="result_strip">
+		        <div class="result_strip js-result_strip">
 		        	<ul class="thumbnails"></ul>
 		        </div>
-		        <div id="interactive" class="viewport center-block"></div>
+		        <div class="interactive js-interactive" class="viewport center-block"></div>
 		    </section>
-			<!-- section -->
-			<section class="js-prescInfo">
+			<!-- //section -->
+			<!-- section : 扫描药单后显示 -->
+			<section class="text-center search-drug js-search-drug">
+				<form class="form-inline">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-addon"></div>
+							<input type="text" class="form-control" placeholder="请输入药品名称">
+						</div>
+					</div>
+					<button type="submit" class="btn btn-info"> 查询 </button>
+				</form>
+			</section>
+			<!-- //section -->
+			<!-- section : 扫描药单后显示 -->
+			<section class="presc-info js-presc-info">
 				<table class="table table-noborder fontsize patient-info">
 					<caption class="text-left capt-color">病人信息：</caption>
 					<tr>
@@ -152,6 +167,10 @@
 					  <td>验证不通过，***库存不足，请找医生重新开药！</td>
 					</tr>
 				</table>
+			    <div class="text-center">
+	                <button type="button" class="btn btn-info js-succeed">验证成功</button>&nbsp;&nbsp;&nbsp;
+	                <button type="button" class="btn btn-info js-fail">验证失败</button>
+		        </div>
 			</section>
 			<!-- //section -->
 		</div>
