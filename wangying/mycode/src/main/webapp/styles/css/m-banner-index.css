@@ -51,14 +51,6 @@
 .m-banner-index header .login a:hover{
 	text-decoration: underline;
 }
-.m-banner-index header .login a.loginBtn{
-	border-color: #0e689d;
-	color: #0e689d;
-}
-.m-banner-index header .login a.loginBtn:hover{
-	text-decoration: none;
-	color: #084b73;
-}
 
 
 .m-banner-index section .table-noborder td{
@@ -79,33 +71,29 @@
   margin: 0 auto 20px;
   padding: 10px;
 }
-.search-drug{
-  margin: 0 auto 20px;
-  padding: 10px;
-}
 
-.interactive.viewport {
+.viewport {
   width: 640px;
   height: 480px;
   display: none;
   margin-top: .5em;
 }
-.interactive.viewport canvas, video {
+.viewport canvas, video {
   width: 640px;
   height: 480px;
 }
-.interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+.viewport canvas.drawingBuffer, video.drawingBuffer {
   margin-left: -640px;
 }
 
-.interactive {
+.result_strip {
   margin: 10px 0;
   border-top: 1px solid #EEE;
   border-bottom: 1px solid #EEE;
   padding: 10px 0;
   display: none;
 }
-.interactive > ul {
+.result_strip > ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -114,29 +102,29 @@
   overflow-y: hidden;
   white-space: nowrap;
 }
-.interactive > ul > li {
+.result_strip > ul > li {
   display: inline-block;
   vertical-align: middle;
   width: 160px;
 }
-.interactive > ul > li .thumbnail {
+.result_strip > ul > li .thumbnail {
   padding: 5px;
   margin: 4px;
   border: 1px dashed #CCC;
 }
-.interactive > ul > li .thumbnail img {
+.result_strip > ul > li .thumbnail img {
   max-width: 140px;
 }
-.interactive > ul > li .thumbnail .caption {
+.result_strip > ul > li .thumbnail .caption {
   white-space: normal;
 }
-.interactive > ul > li .thumbnail .caption h4 {
+.result_strip > ul > li .thumbnail .caption h4 {
   text-align: center;
   word-wrap: break-word;
   height: 40px;
   margin: 0px;
 }
-.interactive > ul:after {
+.result_strip > ul:after {
   content: "";
   display: table;
   clear: both;
@@ -149,44 +137,38 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
-  .search-drug{
-    margin: 10px auto;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
   .scan-warp form.voucher-form input.voucher-code {
     width: 180px;
   }
 }
 @media (max-width: 603px) {
-  .interactive.viewport {
+  .viewport {
     width: 300px;
     height: 300px;
     overflow: hidden;
   }
-  .interactive.viewport canvas, video {
+  .viewport canvas, video {
     margin-top: -50px;
     width: 300px;
     height: 400px;
   }
-  .interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
+  .viewport canvas.drawingBuffer, video.drawingBuffer {
     margin-left: -300px;
   }
 
-  .interactive {
+  .result_strip {
     margin-top: 5px;
     padding-top: 5px;
   }
-  .interactive ul.thumbnails > li {
+  .result_strip ul.thumbnails > li {
     width: 150px;
   }
-  .interactive ul.thumbnails > li .thumbnail .imgWrapper {
+  .result_strip ul.thumbnails > li .thumbnail .imgWrapper {
     width: 130px;
     height: 130px;
     overflow: hidden;
   }
-  .interactive ul.thumbnails > li .thumbnail .imgWrapper img {
+  .result_strip ul.thumbnails > li .thumbnail .imgWrapper img {
     margin-top: -25px;
     width: 130px;
     height: 180px;

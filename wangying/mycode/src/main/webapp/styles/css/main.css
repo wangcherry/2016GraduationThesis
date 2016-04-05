@@ -25,10 +25,6 @@ body{
 header{
 	margin-bottom: 4em;
 }
-header a.logo{
-	display: inline-block;
-	cursor: default;
-}
 
 section{
 	background-color: #fff;

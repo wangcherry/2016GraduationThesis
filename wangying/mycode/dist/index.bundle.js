@@ -54,7 +54,7 @@
 	                if (err) {
 	                    return self.handleError(err);
 	                }
-	                $("span.code").html('');
+	                $("js-span.code").html('');
 	                App.attachListeners();
 	                Quagga.start();
 	            });
@@ -67,7 +67,7 @@
 	            $(".js-controls").on("click", "button.js-stop", function(e) {
 	                e.preventDefault();
 	                Quagga.stop();
-	                $("span.code").html('');
+	                $("js-span.code").html('');
 	                $(".js-scan-warp").hide();
 	            });
 	        },
