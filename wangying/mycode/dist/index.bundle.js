@@ -54,7 +54,7 @@
 	                if (err) {
 	                    return self.handleError(err);
 	                }
-	                $("js-span.code").html('');
+	                $("span.js-code").html('');
 	                App.attachListeners();
 	                Quagga.start();
 	            });
@@ -67,8 +67,8 @@
 	            $(".js-controls").on("click", "button.js-stop", function(e) {
 	                e.preventDefault();
 	                Quagga.stop();
-	                $("js-span.code").html('');
-	                $(".js-scan-warp").hide();
+	                $("span.js-code").html('');
+	                $(".js-interactive").hide();
 	            });
 	        },
 	        state: {
@@ -132,7 +132,7 @@
 	            $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
 	            $node.find("img").attr("src", canvas.toDataURL());
 	            $node.find("h4.code").html(code);
-	            $("span.code").html(code);
+	            $("span.js-code").html(code);
 	            $(".js-interactive ul.thumbnails").prepend($node);
 	        }
 	    });
