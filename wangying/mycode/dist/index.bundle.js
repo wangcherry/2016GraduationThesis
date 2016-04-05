@@ -68,7 +68,7 @@
 	                e.preventDefault();
 	                Quagga.stop();
 	                $("span.js-code").html('');
-	                $(".js-interactive").hide();
+	                $("#interactive").hide();
 	            });
 	        },
 	        state: {
@@ -95,7 +95,7 @@
 
 	    $(".js-controls").on("click", "button.js-start", function(e) {
 	        App.init();
-	        $(".js-interactive").show();
+	        $("#interactive").show();
 	    });
 
 	    Quagga.onProcessed(function(result) {
