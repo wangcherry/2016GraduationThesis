@@ -133,7 +133,7 @@
 	            $node.find("img").attr("src", canvas.toDataURL());
 	            $node.find("h4.code").html(code);
 	            $("span.js-code").html(code);
-	            $(".js-interactive ul.thumbnails").prepend($node);
+	            $(".js-result_strip ul.thumbnails").prepend($node);
 	        }
 	    });
 

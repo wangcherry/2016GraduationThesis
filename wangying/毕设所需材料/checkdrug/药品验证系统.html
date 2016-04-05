@@ -1,0 +1,147 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>药品验证系统</title>
+</head>
+<body>
+<div id="wmd-preview" class="wmd-preview"><div class="md-section-divider"></div><div class="md-section-divider"></div><h1 data-anchor-id="1msj" id="药品验证系统">药品验证系统</h1><div class="md-section-divider"></div><h2 data-anchor-id="dsos" id="通过药单id获取药单信息">通过药单id获取药单信息</h2><p data-anchor-id="pz9m"><strong>请求接口</strong>：<a href="http://222.24.63.100:9149/checkdrug/check/checkdrugList.do" target="_blank">http://222.24.63.100:9149/checkdrug/check/checkdrugList.do</a></p><p data-anchor-id="v4c9"><strong>请求参数</strong>：</p><table data-anchor-id="0h5m" class="table table-striped-white table-bordered">
+    <tbody><tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>checkdrug_id</td>
+          <td>药单id</td>
+    </tr>
+</tbody></table><p data-anchor-id="0vw1"><strong>请求方式</strong>：post</p><p data-anchor-id="kcyg"><strong>响应参数</strong>：</p><table data-anchor-id="xfv5" class="table table-striped-white table-bordered">
+    <tbody><tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>checkdrugInfo</td>
+         <td>药品信息</td>
+    </tr>
+    <tr>
+        <td>checkdrug_num</td>
+         <td>药品数量</td>
+    </tr>
+      <tr>
+        <td>d_id</td>
+         <td>药品编码</td>
+    </tr>
+       <tr>
+        <td>d_manufacturer</td>
+         <td>药品编码</td>
+    </tr>
+     <tr>
+        <td>d_name</td>
+         <td>药品名称</td>
+    </tr>
+      <tr>
+        <td>d_specification\</td>
+         <td>药品规格</td>
+    </tr>
+       <tr>
+        <td>doctorInfo</td>
+         <td>医生信息</td>
+    </tr>
+       <tr>
+        <td>doctors_age</td>
+         <td>医生年龄</td>
+    </tr>
+       <tr>
+        <td>doctors_departments</td>
+         <td>医生科室</td>
+    </tr>
+      <tr>
+        <td>doctors_id</td>
+         <td>医生id</td>
+    </tr>
+      <tr>
+        <td>doctors_name</td>
+         <td>医生姓名</td>
+    </tr>
+     <tr>
+        <td>doctors_password</td>
+         <td>医生登录密码</td>
+    </tr>
+     <tr>
+        <td>doctors_sex</td>
+         <td>医生性别</td>
+    </tr>
+    <tr>
+        <td>doctors_username</td>
+         <td>医生用户名</td>
+    </tr>
+     <tr>
+        <td>userInfo</td>
+         <td>用户信息</td>
+    </tr>
+    <tr>
+        <td>u_age</td>
+         <td>用户年龄</td>
+    </tr> 
+      <tr>
+        <td>u_id</td>
+         <td>用户id</td>
+    </tr>  
+    <tr>
+        <td>u_name</td>
+         <td>用户姓名</td>
+    </tr>  
+    <tr>
+        <td>u_password</td>
+         <td>用户密码</td>
+    </tr> 
+    <tr>
+        <td>u_sex</td>
+         <td>用户性别</td>
+    </tr> 
+    <tr>
+        <td>u_username</td>
+         <td>用户用户名</td>
+    </tr> 
+
+</tbody></table><p data-anchor-id="lr2g">响应示例：</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="ev4h"><ol class="linenums"><li class="L0"><code></code></li><li class="L1"><code><span class="pun">{</span><span class="pln"> </span></code></li><li class="L2"><code><span class="pln">    </span><span class="str">"checkdrugInfo"</span><span class="pun">:</span><span class="str">"[                                                  </span></code></li><li class="L3"><code><span class="str">                        {                                                       </span></code></li><li class="L4"><code><span class="str">                            \"checkdrug_num\":4,                        </span></code></li><li class="L5"><code><span class="str">                            \"d_id\":\"111\",                               </span></code></li><li class="L6"><code><span class="str">                            \"d_manufacturer\":\"深圳高卓药业(胶囊)\",      </span></code></li><li class="L7"><code><span class="str">                            \"d_name\":\"阿莫西林\",                        </span></code></li><li class="L8"><code><span class="str">                            \"d_specification\":\" 250mg*24 盒（瓶）\"      </span></code></li><li class="L9"><code><span class="str">                        },</span></code></li><li class="L0"><code><span class="str">                        { </span></code></li><li class="L1"><code><span class="str">                            \"checkdrug_num\":2,                    </span></code></li><li class="L2"><code><span class="str">                            \"d_id\":\"222\",</span></code></li><li class="L3"><code><span class="str">                            \"d_manufacturer\":\"广州感康药业\",</span></code></li><li class="L4"><code><span class="str">                            \"d_name\":\"感康\",</span></code></li><li class="L5"><code><span class="str">                            \"d_specification\":\"190mg*14 盒（瓶）\"</span></code></li><li class="L6"><code><span class="str">                        }</span></code></li><li class="L7"><code><span class="str">                    ]"</span><span class="pun">,</span></code></li><li class="L8"><code><span class="pln">    </span><span class="str">"doctorInfo"</span><span class="pun">:</span><span class="str">"                                                          </span></code></li><li class="L9"><code><span class="str">                    {</span></code></li><li class="L0"><code><span class="str">                        \"doctors_age\":\"30\",                             </span></code></li><li class="L1"><code><span class="str">                        \"doctors_departments\":\"内科\",                 </span></code></li><li class="L2"><code><span class="str">                        \"doctors_id\":1,                                   </span></code></li><li class="L3"><code><span class="str">                        \"doctors_name\":\"寇鑫\",                            </span></code></li><li class="L4"><code><span class="str">                        \"doctors_password\":\"thisthis\",                  </span></code></li><li class="L5"><code><span class="str">                        \"doctors_sex\":\"男\",                              </span></code></li><li class="L6"><code><span class="str">                        \"doctors_username\":\"kouxin\"                     </span></code></li><li class="L7"><code><span class="str">                    }"</span><span class="pun">,</span></code></li><li class="L8"><code><span class="pln">    </span><span class="str">"userInfo"</span><span class="pun">:</span><span class="str">"                                                            </span></code></li><li class="L9"><code><span class="str">                    {</span></code></li><li class="L0"><code><span class="str">                        \"u_age\":10,                                       </span></code></li><li class="L1"><code><span class="str">                        \"u_id\":1,                                         </span></code></li><li class="L2"><code><span class="str">                        \"u_name\":\"王英\",                              </span></code></li><li class="L3"><code><span class="str">                        \"u_password\":\"123456\",                          </span></code></li><li class="L4"><code><span class="str">                        \"u_sex\":\"女\",                                    </span></code></li><li class="L5"><code><span class="str">                        \"u_username\":\"wangying\"                         </span></code></li><li class="L6"><code><span class="str">                    }"</span></code></li><li class="L7"><code><span class="pun">}</span></code></li></ol></pre><div class="md-section-divider"></div><h2 data-anchor-id="wah2" id="通过关键字模糊查询药品信息">通过关键字模糊查询药品信息</h2><p data-anchor-id="6oo5"><strong>请求接口</strong>：<a href="http://222.24.63.100:9149/checkdrug/check/findDrugBlurry.do" target="_blank">http://222.24.63.100:9149/checkdrug/check/findDrugBlurry.do</a></p><p data-anchor-id="fob4"><strong>请求参数</strong>：</p><table data-anchor-id="0ene" class="table table-striped-white table-bordered">
+    <tbody><tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>d_name</td>
+          <td>请求药品名称关键字</td>
+    </tr>
+</tbody></table><p data-anchor-id="os4p"><strong>请求方式</strong>：post</p><p data-anchor-id="dk9m"><strong>响应参数</strong>：</p><table data-anchor-id="qkor" class="table table-striped-white table-bordered">
+    <tbody><tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>d_id</td>
+          <td>药品id</td>
+    </tr>
+    <tr>
+        <td>d_manufacturer</td>
+          <td>药品厂商</td>
+    </tr>
+    <tr>
+        <td>d_name</td>
+          <td>药品名称</td>
+    </tr>
+    <tr>
+        <td>d_num</td>
+          <td>药品数量</td>
+    </tr>
+    <tr>
+        <td>d_specification</td>
+          <td>药品规格</td>
+    </tr>
+    <tr>
+        <td>date</td>
+          <td>药品录入日期</td>
+    </tr>
+</tbody></table><p data-anchor-id="uda5"><strong>响应示例</strong>：</p><div class="md-section-divider"></div><pre class="prettyprint linenums prettyprinted" data-anchor-id="qzlt"><ol class="linenums"><li class="L0"><code><span class="pun">[</span><span class="pln"> </span></code></li><li class="L1"><code><span class="pln">    </span><span class="pun">{</span></code></li><li class="L2"><code><span class="pln">        </span><span class="str">"d_id"</span><span class="pun">:</span><span class="str">"333"</span><span class="pun">,</span><span class="pln">                                                                   </span></code></li><li class="L3"><code><span class="pln">        </span><span class="str">"d_manufacturer"</span><span class="pun">:</span><span class="str">"正大药业"</span><span class="pun">,</span><span class="pln">                                        </span></code></li><li class="L4"><code><span class="pln">        </span><span class="str">"d_name"</span><span class="pun">:</span><span class="str">"999感冒冲剂"</span><span class="pun">,</span><span class="pln">                                             </span></code></li><li class="L5"><code><span class="pln">        </span><span class="str">"d_num"</span><span class="pun">:</span><span class="lit">100</span><span class="pun">,</span></code></li><li class="L6"><code><span class="pln">        </span><span class="str">"d_specification"</span><span class="pun">:</span><span class="str">"10袋装（盒）"</span><span class="pun">,</span><span class="pln">                    </span></code></li><li class="L7"><code><span class="pln">        </span><span class="str">"date"</span><span class="pun">:</span><span class="str">""</span><span class="pln">                                                           </span></code></li><li class="L8"><code><span class="pln">    </span><span class="pun">},</span></code></li><li class="L9"><code></code></li><li class="L0"><code><span class="pln">    </span><span class="pun">{</span></code></li><li class="L1"><code><span class="pln">        </span><span class="str">"d_id"</span><span class="pun">:</span><span class="str">"444"</span><span class="pun">,</span></code></li><li class="L2"><code><span class="pln">        </span><span class="str">"d_manufacturer"</span><span class="pun">:</span><span class="str">"正大药业"</span><span class="pun">,</span></code></li><li class="L3"><code><span class="pln">        </span><span class="str">"d_name"</span><span class="pun">:</span><span class="str">"四级感冒冲剂"</span><span class="pun">,</span></code></li><li class="L4"><code><span class="pln">        </span><span class="str">"d_num"</span><span class="pun">:</span><span class="lit">100</span><span class="pun">,</span></code></li><li class="L5"><code><span class="pln">        </span><span class="str">"d_specification"</span><span class="pun">:</span><span class="str">"20袋装（盒）"</span><span class="pun">,</span></code></li><li class="L6"><code><span class="pln">        </span><span class="str">"date"</span><span class="pun">:</span><span class="str">""</span></code></li><li class="L7"><code><span class="pln">    </span><span class="pun">}</span></code></li><li class="L8"><code><span class="pun">]</span></code></li></ol></pre></div>
+</body>
+</html>

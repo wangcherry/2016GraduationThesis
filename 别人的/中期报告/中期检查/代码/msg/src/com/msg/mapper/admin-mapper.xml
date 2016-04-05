@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.msg.entity.admin">
+     <select id="login" resultType="int" parameterType="admin">
+  	select count(*) from admin where a_username = #{a_username} and a_password=#{a_password}
+  </select>
+    <select id="checkpwd" resultType="int" parameterType="admin">
+  	select count(*) from admin where a_id = #{a_id} and a_password=#{a_password}
+  </select>
+  <select id="findaid" resultType="admin" parameterType="admin">
+		select a_id from admin where a_username=#{a_username}
+	</select>	
+  <!-- 修改操作 -->
+	<update id="update" parameterType="admin">
+	  update admin set a_password=#{a_password} where a_id=#{a_id}
+	</update>
+</mapper>

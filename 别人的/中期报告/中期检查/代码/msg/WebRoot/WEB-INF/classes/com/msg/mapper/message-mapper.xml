@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"     
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.msg.entity.message">
+    <!-- 插入操作 -->
+	<insert id="add" parameterType="message">
+	   insert into message(m_id,m_name,type,text,date)
+	   values(#{m_id},#{m_name},#{type},#{text},now())
+	</insert>
+
+
+	<!--  查询操作-->
+	<select id="findId" parameterType="message" resultType="int">
+	  select count(m_id) from message where m_id=#{m_id}
+	</select>
+	<!-- 查询全部 -->
+	<select id="getAll" resultType="message">
+	   select * from message
+	</select>
+</mapper>

@@ -1,0 +1,227 @@
+一、通过药单id获取药单信息
+
+请求接口：http://222.24.63.100:9149/checkdrug/check/checkdrugList.do
+
+请求参数：
+
+<table>
+    <tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>checkdrug_id</td>
+          <td>药单id</td>
+    </tr>
+</table>
+请求方式：post
+
+响应参数：
+
+<table>
+    <tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>checkdrugInfo</td>
+         <td>药品信息</td>
+    </tr>
+    <tr>
+        <td>checkdrug_num</td>
+         <td>药品数量</td>
+    </tr>
+      <tr>
+        <td>d_id</td>
+         <td>药品编码</td>
+    </tr>
+       <tr>
+        <td>d_manufacturer</td>
+         <td>药品编码</td>
+    </tr>
+     <tr>
+        <td>d_name</td>
+         <td>药品名称</td>
+    </tr>
+      <tr>
+        <td>d_specification\</td>
+         <td>药品规格</td>
+    </tr>
+       <tr>
+        <td>doctorInfo</td>
+         <td>医生信息</td>
+    </tr>
+       <tr>
+        <td>doctors_age</td>
+         <td>医生年龄</td>
+    </tr>
+       <tr>
+        <td>doctors_departments</td>
+         <td>医生科室</td>
+    </tr>
+      <tr>
+        <td>doctors_id</td>
+         <td>医生id</td>
+    </tr>
+      <tr>
+        <td>doctors_name</td>
+         <td>医生姓名</td>
+    </tr>
+     <tr>
+        <td>doctors_password</td>
+         <td>医生登录密码</td>
+    </tr>
+     <tr>
+        <td>doctors_sex</td>
+         <td>医生性别</td>
+    </tr>
+    <tr>
+        <td>doctors_username</td>
+         <td>医生用户名</td>
+    </tr>
+     <tr>
+        <td>userInfo</td>
+         <td>用户信息</td>
+    </tr>
+    <tr>
+        <td>u_age</td>
+         <td>用户年龄</td>
+    </tr> 
+      <tr>
+        <td>u_id</td>
+         <td>用户id</td>
+    </tr>  
+    <tr>
+        <td>u_name</td>
+         <td>用户姓名</td>
+    </tr>  
+    <tr>
+        <td>u_password</td>
+         <td>用户密码</td>
+    </tr> 
+    <tr>
+        <td>u_sex</td>
+         <td>用户性别</td>
+    </tr> 
+    <tr>
+        <td>u_username\</td>
+         <td>用户用户名</td>
+    </tr> 
+
+</table>
+响应示例：
+     
+```
+
+{ 
+	"checkdrugInfo":"[													
+						{ 														
+							\"checkdrug_num\":4, 						
+							\"d_id\":\"111\", 								
+							\"d_manufacturer\":\"深圳高卓药业(胶囊)\", 		
+							\"d_name\":\"阿莫西林\", 						
+							\"d_specification\":\" 250mg*24 盒（瓶）\"		
+						},
+						{ 
+							\"checkdrug_num\":2,					
+							\"d_id\":\"222\",
+							\"d_manufacturer\":\"广州感康药业\",
+							\"d_name\":\"感康\",
+							\"d_specification\":\"190mg*14 盒（瓶）\"
+						}
+					]",
+	"doctorInfo":"															
+					{
+						\"doctors_age\":\"30\",								
+						\"doctors_departments\":\"内科\",					
+						\"doctors_id\":1,									
+						\"doctors_name\":\"寇鑫\",							
+						\"doctors_password\":\"thisthis\",					
+						\"doctors_sex\":\"男\",								
+						\"doctors_username\":\"kouxin\"						
+					}",
+	"userInfo":"															
+					{
+						\"u_age\":10,										
+						\"u_id\":1,											
+						\"u_name\":\"王英\",								
+						\"u_password\":\"123456\",							
+						\"u_sex\":\"女\",									
+						\"u_username\":\"wangying\"							
+					}"
+}
+```
+二、通过关键字模糊查询药品信息
+
+请求接口：http://222.24.63.100:9149/checkdrug/check/findDrugBlurry.do
+
+请求参数：
+
+<table>
+    <tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>d_name</td>
+          <td>请求药品名称关键字</td>
+    </tr>
+</table>
+请求方式：post
+
+响应参数：
+
+<table>
+    <tr>
+        <td>参数</td>
+          <td>说明</td>
+    </tr>
+     <tr>
+        <td>d_id</td>
+          <td>药品id</td>
+    </tr>
+    <tr>
+        <td>d_manufacturer</td>
+          <td>药品厂商</td>
+    </tr>
+    <tr>
+        <td>d_name</td>
+          <td>药品名称</td>
+    </tr>
+    <tr>
+        <td>d_num</td>
+          <td>药品数量</td>
+    </tr>
+    <tr>
+        <td>d_specification</td>
+          <td>药品规格</td>
+    </tr>
+    <tr>
+        <td>date</td>
+          <td>药品录入日期</td>
+    </tr>
+</table>
+
+响应示例：
+
+```
+[ 
+	{
+		"d_id":"333",																	
+		"d_manufacturer":"正大药业",										
+		"d_name":"999感冒冲剂",												
+		"d_num":100,
+		"d_specification":"10袋装（盒）",					
+		"date":""															
+	},
+
+	{
+		"d_id":"444",
+		"d_manufacturer":"正大药业",
+		"d_name":"四级感冒冲剂",
+		"d_num":100,
+		"d_specification":"20袋装（盒）",
+		"date":""
+	}
+]
+```

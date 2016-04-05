@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!--  配置别名-->
+	<typeAliases>
+	   		<typeAlias type="com.msg.entity.test" alias="test"></typeAlias>
+	   		<typeAlias type="com.msg.entity.user" alias="user"></typeAlias>
+	   		<typeAlias type="com.msg.entity.message" alias="message"></typeAlias>
+	   		<typeAlias type="com.msg.entity.msg_type" alias="msg_type"></typeAlias>
+	   		<typeAlias type="com.msg.entity.admin" alias="admin"></typeAlias>
+	</typeAliases>
+</configuration>
