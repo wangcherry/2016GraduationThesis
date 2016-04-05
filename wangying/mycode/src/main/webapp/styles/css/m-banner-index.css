@@ -65,6 +65,9 @@
 .m-banner-index section .capt-bottom{
 	margin-bottom: .5em;
 }
+.m-banner-index .result-btn{
+  margin-bottom: .7em;
+}
 
 
 .scan-warp {
@@ -173,4 +176,9 @@
     width: 130px;
     height: 180px;
   }
+}
+
+
+.search-drug-form{
+  margin-bottom: .7em;
 }

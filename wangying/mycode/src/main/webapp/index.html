@@ -18,6 +18,8 @@
 	<!-- for-font-family -->
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<!-- //for-shark-pager -->
+    <!-- <link rel="stylesheet" href="styles/css/shark-pager.css"> -->
 	<!-- //for-font-family -->
 	<link rel="stylesheet" type="text/css" href="styles/css/main.css">
 	<link rel="stylesheet" type="text/css" href="styles/css/m-banner-index.css">
@@ -83,7 +85,7 @@
 				</table>
 				<div class="capt-color capt-bottom">药单信息：</div>
 				<div class="table-responsive">
-					<table class="text-center table table-striped table-bordered">
+					<table class="text-center table table-striped table-bordered js-drug-info">
 						<tr>
 							<th class="text-center">编号</th>
 							<th class="text-center">药名名称</th>
@@ -100,7 +102,7 @@
 							<td>0.5ml*10支/盒</td>
 							<td>2</td>
 							<td>信东生技股份有限司</td>
-							<td><span class="js-pass">通过</span> <span class="js-search" data-toggle="modal" data-target="#myModal">查询</span></td>
+							<td><a href="###" class="js-pass">通过</a> <a href="###" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
 						</tr>
 						<tr>
 							<td>2</td>
@@ -109,7 +111,7 @@
 							<td>0.5ml*10支/盒</td>
 							<td>2</td>
 							<td>信东生技股份有限司</td>
-							<td><span class="js-pass">通过</span> <span class="js-search" data-toggle="modal" data-target="#myModal">查询</span></td>
+							<td><a href="###" class="js-pass">通过</a> <a href="###" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
 						</tr>
 						<tr>
 							<td>3</td>
@@ -118,7 +120,7 @@
 							<td>0.5ml*10支/盒</td>
 							<td>2</td>
 							<td>信东生技股份有限司</td>
-							<td><span class="js-pass">通过</span> <span class="js-search" data-toggle="modal" data-target="#myModal">查询</span></td>
+							<td><a href="###" class="js-pass">通过</a> <a href="###" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
 						</tr>
 						<tr>
 							<td>4</td>
@@ -127,7 +129,7 @@
 							<td>0.5ml*10支/盒</td>
 							<td>2</td>
 							<td>信东生技股份有限司</td>
-							<td><span class="js-pass">通过</span> <span class="js-search" data-toggle="modal" data-target="#myModal">查询</span></td>
+							<td><a href="###" class="js-pass">通过</a> <a href="###" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
 						</tr>
 						<tr>
 							<td>5</td>
@@ -136,7 +138,7 @@
 							<td>0.5ml*10支/盒</td>
 							<td>2</td>
 							<td>信东生技股份有限司</td>
-							<td><span class="js-pass">通过</span> <span class="js-search" data-toggle="modal" data-target="#myModal">查询</span></td>
+							<td><a href="###" class="js-pass">通过</a> <a href="###" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
 						</tr>
 					</table>
 				</div>
@@ -151,8 +153,8 @@
 						<td>验证不通过，***库存不足，请找医生重新开药！</td>
 					</tr>
 				</table>
-				<div class="text-center">
-					<button type="button" class="btn btn-info js-succeed">验证成功</button>&nbsp;&nbsp;&nbsp;
+				<div class="text-center result-btn js-result-btn">
+					<button type="button" class="btn btn-info js-succeed">验证成功</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<button type="button" class="btn btn-info js-fail">验证失败</button>
 				</div>
 			</section>
@@ -181,6 +183,16 @@
 					<h4 class="modal-title" id="myModalLabel">查询到 <span class="js-total">2</span> 条信息</h4>
 				</div>
 				<div class="modal-body">
+					<form class="form-inline text-center search-drug-form">
+						<div class="form-group">
+						<label class="sr-only" for="searchDrug">查找药品</label>
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+								<input type="text" class="form-control" id="searchDrug" placeholder="请输入需要查询的药品">
+							</div>
+						</div>
+						<button type="submit" class="btn btn-primary"> 查询 </button>
+					</form>
 					<div class="table-responsive">
 						<table class="text-center table table-striped table-bordered">
 							<tr>
@@ -239,25 +251,7 @@
 							</tr>
 						</table>
 					</div>
-					<nav class="text-right">
-						<ul class="pagination">
-							<li>
-								<a href="#" aria-label="Previous">
-									<span aria-hidden="true">&laquo;</span>
-								</a>
-							</li>
-							<li><a href="#">1</a></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li>
-								<a href="#" aria-label="Next">
-									<span aria-hidden="true">&raquo;</span>
-								</a>
-							</li>
-						</ul>
-					</nav>
+					<ul id="paging" class="pagination"></ul>
 				</div>
 			</div>
 		</div>
@@ -265,6 +259,7 @@
 
 	<script type="text/javascript" src="scripts/jquery-2.2.2.js"></script>
 	<script type="text/javascript" src="scripts/bootstrap.js"></script>
+    <script type="text/javascript" src="scripts/shark-pager.js"></script>
 	<script type="text/javascript" src="../../../dist/index.bundle.js"></script>
 </body>
 </html>

@@ -137,7 +137,44 @@
 	        }
 	    });
 
+	    //控制分页
+	    $("#paging").sharkPager({
+	        totalPages: 100,
+	        page: 1,
+	        lg : 'zh_CN',
+	        segmentSize : 5
+	    });
 
+
+	    // 点击 通过 响应事件
+	    $(".js-drug-info").on("click", ".js-pass", function(e) {
+	        if (confirm("你确定通过此药品的验证吗？")) {
+	            alert("你已确定通过！");
+	        }
+	        else {
+	            return false;
+	        }
+	    });
+
+	    // 点击 验证成功 响应事件
+	    $(".js-result-btn").on("click", ".js-succeed", function(e) {
+	        if (confirm("你确定验证此药单成功吗？")) {
+	            alert("你已确定成功！");
+	        }
+	        else {
+	            return false;
+	        }
+	    });
+
+	    // 点击 验证成功 响应事件
+	    $(".js-result-btn").on("click", ".js-fail", function(e) {
+	        if (confirm("你确定验证此药单失败吗？")) {
+	            alert("你已确定失败！");
+	        }
+	        else {
+	            return false;
+	        }
+	    });
 	});
 
 /***/ },
