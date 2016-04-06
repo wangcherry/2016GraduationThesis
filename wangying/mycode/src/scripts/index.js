@@ -1,5 +1,9 @@
+/**
+*author wangying
+*2016/04/05
+*/
 var Quagga = require('Quagga');
-
+var flag = false;   //false代表处于扫药单状态
 $(function() {
     var App = {
         init : function() {
@@ -18,12 +22,13 @@ $(function() {
         },
         attachListeners: function() {
             var self = this;
-            $(".js-controls").on("click", "button.js-stop", function(e) {
-                e.preventDefault();
-                Quagga.stop();
-                $("span.js-code").html('');
-                $("#interactive").hide();
-            });
+            $(".js-controls").on("click", "button.js-stop", App.reportClickStop);
+        },
+        reportClickStop: function(e) {
+            e.preventDefault();
+            Quagga.stop();
+            $("span.js-code").html('');
+            $("#interactive").hide();
         },
         state: {
             inputStream: {
@@ -47,10 +52,11 @@ $(function() {
         lastResult : null
     };
 
-    $(".js-controls").on("click", "button.js-start", function(e) {
+    $(".js-controls").on("click", "button.js-start", reportClickStart);
+    reportClickStart: function(e) {
         App.init();
         $("#interactive").show();
-    });
+    }
 
     Quagga.onProcessed(function(result) {
         var drawingCtx = Quagga.canvas.ctx.overlay,
