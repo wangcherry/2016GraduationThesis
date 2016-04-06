@@ -96,7 +96,10 @@ $(function() {
         totalPages: 100,
         page: 1,
         lg : 'zh_CN',
-        segmentSize : 5
+        segmentSize : 5,
+        callback: function(p) {
+            console.log(p);
+        }
     });
 
 

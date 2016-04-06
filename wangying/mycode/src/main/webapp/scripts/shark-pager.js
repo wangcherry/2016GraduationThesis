@@ -1,7 +1,7 @@
 /**
 *分页插件
-*author sweetyx
-*2015/12/29
+*author wangying
+*2016/04/05
 */
 (function($){
 	var zh_CN = {
@@ -52,11 +52,11 @@
 		/*********首页、上一页*********/
 		if(params.page > 1){
 			element.append('<li><a href="#" class="js-firstpage">'+getLg('firstpage',lg)+'</a></li>');
-			element.append('<li><a href="#" aria-label="Previous" class="js-prevpage"><span aria-hidden="true">'+getLg('prevpage',lg)+'</span></a></li>');
+			element.append('<li><a href="#" aria-label="Previous" class="js-prevpage">'+getLg('prevpage',lg)+'</a></li>');
 		}
 		else{
 			element.append('<li class="disabled"><a href="#">'+getLg('firstpage',lg)+'</a></li>');
-			element.append('<li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">'+getLg('prevpage',lg)+'</span></a></li>');
+			element.append('<li class="disabled"><a href="#" aria-label="Previous">'+getLg('prevpage',lg)+'</a></li>');
 		}
 		/*********中间页码*********/
 		//如果当前最页大于一段的页数，生成前边的...
@@ -77,7 +77,7 @@
 			var htmlStr = '';
 			if(params.page == i){
 				//当前页不可点击
-				htmlStr = '<li><a href="#" class="js-shark-pager-currentpage">'+i+'</a></li>'
+				htmlStr = '<li class="active disabled"><a href="#">'+i+'</a></li>'
 			}
 			else{
 				htmlStr = '<li><a href="#" class="js-page">'+i+'</a></li>';
@@ -99,11 +99,11 @@
 		}
 		/*********尾页、下一页*********/
 		if(params.page < params.totalPages){
-			element.append('<li><a href="#" aria-label="Next class="js-nextpage"><span aria-hidden="true">'+getLg('nextpage',lg)+'</span></a></li>');
+			element.append('<li><a href="#" aria-label="Next" class="js-nextpage">'+getLg('nextpage',lg)+'</a></li>');
 			element.append('<li><a href="#" class="js-lastpage">'+getLg('lastpage',lg)+'</a></li>');
 		}
 		else{
-			element.append('<li class="disabled"><a href="#"><span aria-hidden="true">'+getLg('nextpage',lg)+'</span></a></li>');
+			element.append('<li class="disabled"><a href="#" aria-label="Next">'+getLg('nextpage',lg)+'</a></li>');
 			element.append('<li class="disabled"><a href="#">'+getLg('lastpage',lg)+'</a></li>');
 		}
 	};
@@ -160,7 +160,7 @@
 		//点击上一页
 		element.on("click","a.js-prevpage",function(){
 			var args = element.data();
-			var newPage = (parseInt(element.children(".js-shark-pager-currentpage").text())-1) || 1;
+			var newPage = (parseInt(element.children(".active").text())-1) || 1;
 			initHtml(element,{
 				page:newPage,
 				totalPages:args.totalPages
@@ -172,7 +172,7 @@
 		//点击下一页
 		element.on("click","a.js-nextpage",function(){
 			var args = element.data();
-			var newPage = (parseInt(element.children(".js-shark-pager-currentpage").text())+1) || 1;
+			var newPage = (parseInt(element.children(".active").text())+1) || 1;
 			initHtml(element,{
 				page:newPage,
 				totalPages:args.totalPages
