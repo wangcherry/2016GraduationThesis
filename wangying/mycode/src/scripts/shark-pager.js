@@ -6,8 +6,8 @@
 (function($){
 	var zh_CN = {
     	firstpage:'首页',
-    	prevpage:'上一页',
-		nextpage:'下一页',
+    	prevpage:'&laquo;',
+		nextpage:'&raquo;',
     	lastpage:'尾页'
     };
     var zh_TW = {
@@ -49,20 +49,14 @@
 		var segmentSize = args.segmentSize || 5;
 		var lg = args.lg || 'zh_CN';
 		element.empty();
-		/*********首页、上一页*********/
+		/*********上一页*********/
 		if(params.page > 1){
-			element.append('<li><a href="#" class="js-firstpage">'+getLg('firstpage',lg)+'</a></li>');
 			element.append('<li><a href="#" aria-label="Previous" class="js-prevpage">'+getLg('prevpage',lg)+'</a></li>');
 		}
 		else{
-			element.append('<li class="disabled"><a href="#">'+getLg('firstpage',lg)+'</a></li>');
 			element.append('<li class="disabled"><a href="#" aria-label="Previous">'+getLg('prevpage',lg)+'</a></li>');
 		}
 		/*********中间页码*********/
-		//如果当前最页大于一段的页数，生成前边的...
-		if(params.page > segmentSize){
-			element.append('<li><a href="#" class="js-presegment">...</a></li>');
-		}
 		//生成中间页码
 		var segment = Math.floor((params.page-1)/segmentSize);
 		var start = segment*segmentSize+1;
@@ -77,7 +71,7 @@
 			var htmlStr = '';
 			if(params.page == i){
 				//当前页不可点击
-				htmlStr = '<li class="active disabled"><a href="#">'+i+'</a></li>'
+				htmlStr = '<li class="active"><a href="#">'+i+'<span class="sr-only">(current)</span></a></li>'
 			}
 			else{
 				htmlStr = '<li><a href="#" class="js-page">'+i+'</a></li>';
@@ -93,18 +87,12 @@
 			}
 			element.append(htmlEle);
 		}
-		//如果当前最大页小于总页数，生成后边边的...
-		if(end<params.totalPages){
-			element.append('<li><a href="#" class="js-nextsegment">...</a></li>');
-		}
-		/*********尾页、下一页*********/
+		/*********下一页*********/
 		if(params.page < params.totalPages){
 			element.append('<li><a href="#" aria-label="Next" class="js-nextpage">'+getLg('nextpage',lg)+'</a></li>');
-			element.append('<li><a href="#" class="js-lastpage">'+getLg('lastpage',lg)+'</a></li>');
 		}
 		else{
 			element.append('<li class="disabled"><a href="#" aria-label="Next">'+getLg('nextpage',lg)+'</a></li>');
-			element.append('<li class="disabled"><a href="#">'+getLg('lastpage',lg)+'</a></li>');
 		}
 	};
 	//绑定事件
@@ -113,42 +101,6 @@
 		element.on("click","a.js-page",function(){
 			var args = element.data();
 			var newPage = parseInt($(this).text());
-			initHtml(element,{
-				page:newPage,
-				totalPages:args.totalPages
-			});
-			if(typeof(args.callback)=="function"){
-				args.callback(newPage);
-			}
-		});
-		//点击前一页码段
-		element.on("click","a.js-presegment",function(){
-			var args = element.data();
-			var newPage = (parseInt(element.children(".js-minpage").text())-1) || 1;
-			initHtml(element,{
-				page:newPage,
-				totalPages:args.totalPages
-			});
-			if(typeof(args.callback)=="function"){
-				args.callback(newPage);
-			}
-		});
-		//点击后一页码段
-		element.on("click","a.js-nextsegment",function(){
-			var args = element.data();
-			var newPage = (parseInt(element.children(".js-maxpage").text())+1) || 1;
-			initHtml(element,{
-				page:newPage,
-				totalPages:args.totalPages
-			});
-			if(typeof(args.callback)=="function"){
-				args.callback(newPage);
-			}
-		});
-		//点击首页
-		element.on("click","a.js-firstpage",function(){
-			var args = element.data();
-			var newPage = 1;
 			initHtml(element,{
 				page:newPage,
 				totalPages:args.totalPages
@@ -173,18 +125,6 @@
 		element.on("click","a.js-nextpage",function(){
 			var args = element.data();
 			var newPage = (parseInt(element.children(".active").text())+1) || 1;
-			initHtml(element,{
-				page:newPage,
-				totalPages:args.totalPages
-			});
-			if(typeof(args.callback)=="function"){
-				args.callback(newPage);
-			}
-		});
-		//点击尾页
-		element.on("click","a.js-lastpage",function(){
-			var args = element.data();
-			var newPage = args.totalPages;
 			initHtml(element,{
 				page:newPage,
 				totalPages:args.totalPages
