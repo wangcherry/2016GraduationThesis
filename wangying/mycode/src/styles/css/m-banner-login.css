@@ -46,6 +46,11 @@
 	color: #0c557f;
 	font-size: 1em;
 }
+.errorMsg{
+	color: red;
+	margin-top: .1em;
+	display: none;
+}
 section .login-form .loginBtn{
 	margin-top: 2em;
 }

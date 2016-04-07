@@ -101,6 +101,7 @@
 	    $(".js-controls").on("click", "button.js-start", startHandler);
 	    function startHandler(e) {
 	        App.init();
+	        $('#interactive').show();
 	    };
 
 	    Quagga.onProcessed(function(result) {
