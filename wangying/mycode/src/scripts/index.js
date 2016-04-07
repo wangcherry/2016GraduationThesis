@@ -3,6 +3,7 @@
 *2016/04/05
 **/
 var Quagga = require('Quagga');
+
 $(function() {
     var App = {
         init : function() {
