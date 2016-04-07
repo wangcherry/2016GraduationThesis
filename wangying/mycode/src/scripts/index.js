@@ -1,9 +1,8 @@
 /**
 *author wangying
 *2016/04/05
-*/
+**/
 var Quagga = require('Quagga');
-var flag = false;   //false代表处于扫药单状态
 $(function() {
     var App = {
         init : function() {
@@ -22,9 +21,9 @@ $(function() {
         },
         attachListeners: function() {
             var self = this;
-            $(".js-controls").on("click", "button.js-stop", App.reportClickStop);
+            $(".js-controls").on("click", "button.js-stop", App.stopHandler);
         },
-        reportClickStop: function(e) {
+        stopHandler: function(e) {
             e.preventDefault();
             Quagga.stop();
             $("span.js-code").html('');
@@ -52,11 +51,10 @@ $(function() {
         lastResult : null
     };
 
-    $(".js-controls").on("click", "button.js-start", reportClickStart);
-    reportClickStart: function(e) {
+    $(".js-controls").on("click", "button.js-start", startHandler);
+    function startHandler(e) {
         App.init();
-        $("#interactive").show();
-    }
+    };
 
     Quagga.onProcessed(function(result) {
         var drawingCtx = Quagga.canvas.ctx.overlay,
@@ -87,15 +85,25 @@ $(function() {
 
         if (App.lastResult !== code) {
             App.lastResult = code;
-            var $node = null, canvas = Quagga.canvas.dom.image;
-
-            $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
-            $node.find("img").attr("src", canvas.toDataURL());
-            $node.find("h4.code").html(code);
+            //此处注释暂时不可删除
+            // var $node = null, canvas = Quagga.canvas.dom.image;
+            // $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+            // $node.find("img").attr("src", canvas.toDataURL());
+            // $node.find("h4.code").html(code);
+            // $(".js-result_strip ul.thumbnails").prepend($node);
             $("span.js-code").html(code);
-            $(".js-result_strip ul.thumbnails").prepend($node);
+            scanSucceed(code);
         }
     });
+
+    var flag = true;   //true代表处于扫药单状态
+
+    //扫描成功后操作
+    function scanSucceed(code){
+        if(flag){
+            alert(code);
+        }
+    };
 
     //控制分页
     $("#paging").sharkPager({

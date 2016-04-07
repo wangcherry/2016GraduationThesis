@@ -2,7 +2,7 @@
 *分页插件
 *author wangying
 *2016/04/05
-*/
+**/
 (function($){
 	var zh_CN = {
     	firstpage:'首页',
