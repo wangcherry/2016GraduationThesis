@@ -102,7 +102,21 @@ $(function() {
     //扫描成功后操作
     function scanSucceed(code){
         if(flag){
+            $.ajax({
+               type: "POST",
+               url: "http://222.24.63.100:9149/checkdrug/check/checkdrugList.do",
+               data: "checkdrug_id=code",
+               success: function(msg){
+                 alert( "Data Saved: " + msg );
+               },
+               error: function() {
+                  // view("异常！");
+                  alert("异常！");
+                }
+            });
             alert(code);
+        }else{
+            alert("异常！");
         }
     };
 
