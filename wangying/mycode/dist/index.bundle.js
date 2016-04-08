@@ -98,12 +98,14 @@
 	        lastResult : null
 	    };
 
+	    //点击扫一扫处理函数
 	    $(".js-controls").on("click", "button.js-start", startHandler);
 	    function startHandler(e) {
 	        App.init();
 	        $('#interactive').show();
 	    };
 
+	    //扫描进程处理函数
 	    Quagga.onProcessed(function(result) {
 	        var drawingCtx = Quagga.canvas.ctx.overlay,
 	            drawingCanvas = Quagga.canvas.dom.overlay;
@@ -128,6 +130,7 @@
 	        }
 	    });
 
+	    //扫描成功后处理函数
 	    Quagga.onDetected(function(result) {
 	        var code = result.codeResult.code;
 
@@ -147,29 +150,56 @@
 	    var flag = true;   //true代表处于扫药单状态
 
 	    //扫描成功后操作
-	    function scanSucceed(code){
+	    function scanSucceed(presc_code){
 	        if(flag){
 	            $.ajax({
-	               type: "POST",
-	               url: "http://222.24.63.100:9149/checkdrug/check/checkdrugList.do",
-	               data: "checkdrug_id=code",
-	               success: function(msg){
-	                 alert( "Data Saved: " + msg );
+	               type: 'post',
+	               url: 'http://222.24.63.100:9149/checkdrug/check/checkdrugList.do?checkdrug_id='+presc_code,
+	               data: {},
+	               success: function(data){
+	                 alert( "Data Saved: " + data );
 	               },
 	               error: function() {
-	                  // view("异常！");
-	                  alert("异常！");
+	                  alert("请求异常！");
 	                }
 	            });
-	            alert(code);
+	            alert(presc_code);
+	            flag = !flag;
 	        }else{
-	            alert("异常！");
+	            alert("验证药品");
 	        }
 	    };
 
-	    //控制分页
-	    $("#paging").sharkPager({
-	        totalPages: 100,
+	    //查询药品
+	    function searchDrug(drug_code){
+	        $.ajax({
+	           type: 'post',
+	           url: 'http://222.24.63.100:9149/checkdrug/check/findDrugBlurry.do?d_name='+drug_code,
+	           data: {},
+	           success: function(data){
+	             alert( "Data Saved: " + data );
+	           },
+	           error: function() {
+	              alert("请求异常！");
+	            }
+	        });
+	        alert(drug_code);
+	    };
+
+	    //药单药品分页
+	    $("#paging1").sharkPager({
+	        totalPages: 20,
+	        page: 1,
+	        lg : 'zh_CN',
+	        segmentSize : 3,
+	        callback: function(p) {
+	            console.log(p);
+	        }
+	    });
+
+	    //查询药品分页
+	    $("#paging2").sharkPager({
+	        totalPages: 20,
 	        page: 1,
 	        lg : 'zh_CN',
 	        segmentSize : 5,
@@ -178,21 +208,32 @@
 	        }
 	    });
 
-
 	    // 点击 通过 响应事件
 	    $(".js-drug-info").on("click", ".js-pass", function(e) {
-	        if (confirm("你确定通过此药品的验证吗？")) {
-	            alert("你已确定通过！");
+	        if (confirm("确定通过此药品的验证吗？")) {
+	            alert("已确定通过！");
 	        }
 	        else {
 	            return false;
 	        }
 	    });
 
+	    // 点击 查询 响应事件
+	    $(".js-drug-info").on("click", ".js-search", function(e) {
+	        var searchDrugName = 'aaa';
+	        searchDrug(searchDrugName);
+	    });
+	    // 点击 查询 响应事件
+	    $(".myModal").on("click", ".js-search-drug", function(e) {
+	        var searchDrugName = $('#searchDrug').val();
+	        searchDrug(searchDrugName);
+	    });
+
 	    // 点击 验证成功 响应事件
 	    $(".js-result-btn").on("click", ".js-succeed", function(e) {
-	        if (confirm("你确定验证此药单成功吗？")) {
-	            alert("你已确定成功！");
+	        if (confirm("确定验证此药单成功吗？")) {
+	            alert("已确定成功！");
+	            window.location.reload()
 	        }
 	        else {
 	            return false;
@@ -201,8 +242,9 @@
 
 	    // 点击 验证成功 响应事件
 	    $(".js-result-btn").on("click", ".js-fail", function(e) {
-	        if (confirm("你确定验证此药单失败吗？")) {
-	            alert("你已确定失败！");
+	        if (confirm("确定验证此药单失败吗？")) {
+	            alert("已确定失败！");
+	            window.location.reload()
 	        }
 	        else {
 	            return false;
