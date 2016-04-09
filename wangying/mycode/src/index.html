@@ -89,46 +89,6 @@
 							<th class="text-center">药品厂家</th>
 							<th class="text-center">操作</th>
 						</tr>
-						<tr>
-							<td>聚乙烯醇滴眼液</td>
-							<td>4711916012686</td>
-							<td>0.5ml*10支/盒</td>
-							<td>0</td>
-							<td>信东生技股份有限司</td>
-							<td><a href="javascript:void(0);" class="js-pass">通过</a> <a href="javascript:void(0);" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
-						</tr>
-						<tr>
-							<td>聚乙烯醇滴眼液</td>
-							<td>4711916012686</td>
-							<td>0.5ml*10支/盒</td>
-							<td>1</td>
-							<td>信东生技股份有限司</td>
-							<td><a href="javascript:void(0);" class="js-pass">通过</a> <a href="javascript:void(0);" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
-						</tr>
-						<tr>
-							<td>聚乙烯醇滴眼液</td>
-							<td>4711916012686</td>
-							<td>0.5ml*10支/盒</td>
-							<td>2</td>
-							<td>信东生技股份有限司</td>
-							<td><a href="javascript:void(0);" class="js-pass">通过</a> <a href="javascript:void(0);" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
-						</tr>
-						<tr>
-							<td>聚乙烯醇滴眼液</td>
-							<td>4711916012686</td>
-							<td>0.5ml*10支/盒</td>
-							<td>3</td>
-							<td>信东生技股份有限司</td>
-							<td><a href="javascript:void(0);" class="js-pass">通过</a> <a href="javascript:void(0);" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
-						</tr>
-						<tr>
-							<td>聚乙烯醇滴眼液</td>
-							<td>4711916012686</td>
-							<td>0.5ml*10支/盒</td>
-							<td>4</td>
-							<td>信东生技股份有限司</td>
-							<td><a href="javascript:void(0);" class="js-pass">通过</a> <a href="javascript:void(0);" class="js-search" data-toggle="modal" data-target="#myModal">查询</a></td>
-						</tr>
 					</table>
 				</div>
 				<ul id="paging1" class="pull-right pagination pagination-sm"></ul>
@@ -165,13 +125,14 @@
 				<div class="modal-body clearfix">
 					<form class="form-inline text-center search-drug-form">
 						<div class="form-group">
-						<label class="sr-only" for="searchDrug">查找药品</label>
+							<label class="sr-only" for="searchDrug">查找药品</label>
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
 								<input type="text" class="form-control" id="searchDrug" placeholder="请输入需要查询的药品">
+								<div class="input-group-addon js-search-drug">查询</div>
 							</div>
 						</div>
-						<button type="button" class="btn btn-primary js-search-drug"> 查询 </button>
+						<!-- <button type="button" class="btn btn-primary js-search-drug"> 查询 </button> -->
 					</form>
 					<div class="table-responsive">
 						<table class="text-center table table-striped table-bordered js-search-drug-table">
