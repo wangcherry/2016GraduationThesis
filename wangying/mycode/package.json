@@ -9,7 +9,12 @@
   "author": "wangying",
   "license": "ISC",
   "dependencies": {
+    "bootstrap": "^3.3.5",
+    "jquery": "^2.2.3",
     "quagga": "^0.10.0",
     "webpack": "^1.12.14"
+  },
+  "devDependencies": {
+    
   }
 }

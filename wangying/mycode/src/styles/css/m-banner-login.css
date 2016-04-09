@@ -1,3 +1,9 @@
+/**
+*author wangying
+*2016/04/05
+**/
+@charset "UTF-8";
+
 /* 小屏幕（平板，大于等于 768px） */
 @media (min-width: 768px) {
 	header{
@@ -47,9 +53,8 @@
 	font-size: 1em;
 }
 .errorMsg{
-	color: red;
+	color: #fff;
 	margin-top: .1em;
-	display: none;
 }
 section .login-form .loginBtn{
 	margin-top: 2em;

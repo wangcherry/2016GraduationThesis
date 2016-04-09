@@ -95,54 +95,149 @@ $(function() {
             // $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
             // $node.find("img").attr("src", canvas.toDataURL());
             // $node.find("h4.code").html(code);
-            // $(".js-result_strip ul.thumbnails").prepend($node);
+            // $(".js-result-strip ul.thumbnails").prepend($node);
             $("span.js-code").html(code);
             scanSucceed(code);
         }
     });
 
-    var flag = true;   //true代表处于扫药单状态
+    var scanFlag = true;   //true代表处于扫药单状态
+    var testFlag = false;   //false代表药单没有通过验证
+    var drugNum,prescNum;
+    var druInfoTable = $('.js-drug-info-table');
+    var searchDrugTable = $('.js-search-drug-table');
+    var searchDrug = $('#searchDrug');
 
+    /* 获取url参数 */
+    function getQueryString(e) {
+        var t = new RegExp("(^|&)"+e+"=([^&]*)(&|$)","i");
+        var paramStr = window.location.hash || window.location.search;
+        var n = paramStr.substr(1).match(t);
+        if( n != null) {
+            return unescape( n[2] );
+        }
+        return "";
+    };
+    //获取用户名
+    function getUsername() {
+        var username =  getQueryString('username');
+        if(username == ''){
+            alert('您还未登录，请先登录！');
+            window.location.href = 'login.html';
+        }else{
+            $('.js-username').html(username);
+        }
+    };
+    getUsername();
+
+scanSucceed();
     //扫描成功后操作
-    function scanSucceed(presc_code){
-        if(flag){
+    function scanSucceed(){
+        var prescCode = '6937748304647';
+        if(scanFlag){  //此时是扫描药单
             $.ajax({
                type: 'post',
-               url: 'http://222.24.63.100:9149/checkdrug/check/checkdrugList.do?checkdrug_id='+presc_code,
+               url: '/checkdrug/check/checkdrugList.do?checkdrug_id='+prescCode,
                data: {},
                success: function(data){
-                 alert( "Data Saved: " + data );
+                   scanPrescHandler(data,prescCode);
                },
                error: function() {
                   alert("请求异常！");
                 }
             });
-            alert(presc_code);
-            flag = !flag;
-        }else{
+            scanFlag = !scanFlag;
+        }else{  //此时是扫描药品
             alert("验证药品");
+            alert(prescCode);
+        }
+    };
+    function scanPrescHandler(data,prescCode){
+        var prescData = JSON.parse(data);
+        var tr = '';
+        $('.js-u-name').html(prescData.userInfo.u_name);
+        $('.js-u-sex').html(prescData.userInfo.u_sex);
+        $('.js-u-age').html(prescData.userInfo.u_age);
+        $('.js-u-presc').html(prescCode);
+        $('.js-doctors-name').html(prescData.doctorInfo.doctors_name);
+        $('.js-doctors-sex').html(prescData.doctorInfo.doctors_sex);
+        $('.js-doctors-departments').html(prescData.doctorInfo.doctors_departments);
+        prescNum = prescData.checkdrugInfo.length;
+        for(var i = 0 ; i < prescNum ; i++){
+            tr += '<tr><td>'+prescData.checkdrugInfo[i].d_name+'</td><td>'+prescData.checkdrugInfo[i].d_id+'</td><td>'+prescData.checkdrugInfo[i].d_specification+'</td><td>'+prescData.checkdrugInfo[i].checkdrug_num+'</td><td>'+prescData.checkdrugInfo[i].d_manufacturer+'</td><td>'+'操作'+'</td><tr>';
+        };
+        druInfoTable.append(tr);
+    }
+
+    //查询药品输入框聚焦
+    searchDrug.focus(function(){
+        searchDrug.val('');
+    });
+
+    //查询药品操作
+    function searchDrugHandler(){
+        var searchDrugName = searchDrug.val();
+        if(searchDrugName == ''){
+            searchDrug.focus();
+            return;
+        }else{
+            searchDrugTable.find('tr td').parent().html('');
+            $.ajax({
+               type: 'post',
+               url: '/checkdrug/check/findDrugBlurry.do?d_name='+searchDrugName,
+               data: {},
+               success: function(data){
+                   successHandler(data);
+               },
+               error: function() {
+                   alert("请求异常！");
+                }
+            });
+        };
+    };
+    //成功返回数据 处理函数
+    function successHandler(data){
+        var drugData = JSON.parse(data);
+        var tr = '';
+        drugNum = drugData.length;
+        $('.js-total').html(drugNum);
+        for(var i = 0 ; i < drugNum ; i++){
+            tr += '<tr><td>'+drugData[i].d_name+'</td><td>'+drugData[i].d_id+'</td><td>'+drugData[i].d_specification+'</td><td>'+drugData[i].d_num+'</td><td>'+drugData[i].d_manufacturer+'</td><td>'+drugData[i].d_coordinate+'</td><td>'+drugData[i].date+'</td><tr>';
+        };
+        searchDrugTable.append(tr);
+    };
+
+    //验证结果显示函数
+    function testResultTip(){
+        var testResultFalg = druInfoTable.find('td').length;
+        var testResult = $('.js-test-result')
+        if(testResultFalg != 0){
+            testResult.html('还有药品没有通过验证，暂时不可发药！');
+        }else{
+            testResult.html('药品验证通过，可发药！');
+            testFlag = !testFlag;
         }
     };
 
-    //查询药品
-    function searchDrug(drug_code){
+    //返回验证结果函数
+    function testResultHandler(testResult){
         $.ajax({
-           type: 'post',
-           url: 'http://222.24.63.100:9149/checkdrug/check/findDrugBlurry.do?d_name='+drug_code,
-           data: {},
-           success: function(data){
-             alert( "Data Saved: " + data );
-           },
+            type: 'post',
+            url: '/checkdrug/check/returnCheck.do?result='+testResult,
+            data: {},
+            success:function(){
+                alert("后台已更新！");
+                window.location.reload();
+            },
            error: function() {
-              alert("请求异常！");
+               alert("请求异常！");
             }
-        });
-        alert(drug_code);
+        })
     };
 
     //药单药品分页
     $("#paging1").sharkPager({
-        totalPages: 20,
+        totalPages: prescNum,
         page: 1,
         lg : 'zh_CN',
         segmentSize : 3,
@@ -153,7 +248,7 @@ $(function() {
 
     //查询药品分页
     $("#paging2").sharkPager({
-        totalPages: 20,
+        totalPages: drugNum,
         page: 1,
         lg : 'zh_CN',
         segmentSize : 5,
@@ -163,9 +258,10 @@ $(function() {
     });
 
     // 点击 通过 响应事件
-    $(".js-drug-info").on("click", ".js-pass", function(e) {
+    druInfoTable.on("click", ".js-pass", function(e) {
         if (confirm("确定通过此药品的验证吗？")) {
-            alert("已确定通过！");
+            $(this).parent().parent().html('');
+            testResultTip();
         }
         else {
             return false;
@@ -173,35 +269,22 @@ $(function() {
     });
 
     // 点击 查询 响应事件
-    $(".js-drug-info").on("click", ".js-search", function(e) {
-        var searchDrugName = 'aaa';
-        searchDrug(searchDrugName);
+    druInfoTable.on("click", ".js-search", function(e) {
+        var searchDrugName = $(this).parent().siblings().eq(0).html();
+        searchDrug.val(searchDrugName);
+        searchDrugHandler();
     });
     // 点击 查询 响应事件
-    $(".myModal").on("click", ".js-search-drug", function(e) {
-        var searchDrugName = $('#searchDrug').val();
-        searchDrug(searchDrugName);
-    });
+    $("#myModal").on("click", ".js-search-drug",searchDrugHandler);
 
-    // 点击 验证成功 响应事件
-    $(".js-result-btn").on("click", ".js-succeed", function(e) {
-        if (confirm("确定验证此药单成功吗？")) {
-            alert("已确定成功！");
-            window.location.reload()
-        }
-        else {
-            return false;
-        }
-    });
-
-    // 点击 验证成功 响应事件
-    $(".js-result-btn").on("click", ".js-fail", function(e) {
-        if (confirm("确定验证此药单失败吗？")) {
-            alert("已确定失败！");
-            window.location.reload()
-        }
-        else {
-            return false;
-        }
+    // 验证结果 响应事件
+    $(".js-result-btn").on("click", function(e) {
+        if(testFlag){
+            alert('此药单通过了验证，请发药！');
+            testResultHandler(testFlag);
+        }else{
+            alert('此药单没有通过验证，请勿发药！');
+            testResultHandler(testFlag);
+        };
     });
 });

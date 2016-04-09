@@ -1,3 +1,7 @@
+/**
+*author wangying
+*2016/04/05
+**/
 @charset "UTF-8";
 
 /* 小屏幕（平板，大于等于 768px） */
@@ -57,7 +61,7 @@
 	border-top: none;
 }
 .m-banner-index section .fontsize td{
-  padding: 2px 1px;
+  padding: 2px 0;
 }
 .m-banner-index section .capt-color{
 	color: #0c557f;
@@ -65,8 +69,11 @@
 .m-banner-index section .capt-bottom{
 	margin-bottom: .5em;
 }
+.m-banner-index section .test-result{
+  color: #333;
+}
 .m-banner-index .result-btn{
-  margin-bottom: .7em;
+  margin: 1em 0 .7em;
 }
 
 
@@ -89,14 +96,14 @@
   margin-left: -640px;
 }
 
-.result_strip {
+.result-strip {
   margin: 10px 0;
   border-top: 1px solid #EEE;
   border-bottom: 1px solid #EEE;
   padding: 10px 0;
   display: none;
 }
-.result_strip > ul {
+.result-strip > ul {
   padding: 0;
   margin: 0;
   list-style-type: none;
@@ -105,29 +112,29 @@
   overflow-y: hidden;
   white-space: nowrap;
 }
-.result_strip > ul > li {
+.result-strip > ul > li {
   display: inline-block;
   vertical-align: middle;
   width: 160px;
 }
-.result_strip > ul > li .thumbnail {
+.result-strip > ul > li .thumbnail {
   padding: 5px;
   margin: 4px;
   border: 1px dashed #CCC;
 }
-.result_strip > ul > li .thumbnail img {
+.result-strip > ul > li .thumbnail img {
   max-width: 140px;
 }
-.result_strip > ul > li .thumbnail .caption {
+.result-strip > ul > li .thumbnail .caption {
   white-space: normal;
 }
-.result_strip > ul > li .thumbnail .caption h4 {
+.result-strip > ul > li .thumbnail .caption h4 {
   text-align: center;
   word-wrap: break-word;
   height: 40px;
   margin: 0px;
 }
-.result_strip > ul:after {
+.result-strip > ul:after {
   content: "";
   display: table;
   clear: both;
@@ -159,19 +166,19 @@
     margin-left: -300px;
   }
 
-  .result_strip {
+  .result-strip {
     margin-top: 5px;
     padding-top: 5px;
   }
-  .result_strip ul.thumbnails > li {
+  .result-strip ul.thumbnails > li {
     width: 150px;
   }
-  .result_strip ul.thumbnails > li .thumbnail .imgWrapper {
+  .result-strip ul.thumbnails > li .thumbnail .imgWrapper {
     width: 130px;
     height: 130px;
     overflow: hidden;
   }
-  .result_strip ul.thumbnails > li .thumbnail .imgWrapper img {
+  .result-strip ul.thumbnails > li .thumbnail .imgWrapper img {
     margin-top: -25px;
     width: 130px;
     height: 180px;
