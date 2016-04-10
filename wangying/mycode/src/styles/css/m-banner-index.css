@@ -71,8 +71,11 @@
 .m-banner-index section .capt-bottom{
 	margin-bottom: .5em;
 }
+.m-banner-index section .capt-top{
+  margin-top: .8em;
+}
 .m-banner-index section .test-result{
-  color: #333;
+  color: red;
 }
 .m-banner-index .result-btn{
   margin: 1em 0 .7em;

@@ -103,11 +103,12 @@ $(function() {
 
     var scanFlag = true;   //true代表处于扫药单状态
     var testFlag = false;   //false代表药单没有通过验证
-    var drugNum,prescNum;
-    var prescInfo = $('.js-presc-info');
-    var druInfoTable = $('.js-drug-info-table');
-    var searchDrugTable = $('.js-search-drug-table');
-    var searchDrug = $('#searchDrug');
+    var drugNum,prescNum;   //用于分页，代表请求到的数据数量
+    var tr1 = [], tr2 = []; //用于分页的数据显示
+    var prescInfo = $('.js-presc-info');   //显示药单所有信息
+    var druInfoTable = $('.js-drug-info-table');  //药单里的药品信息
+    var searchDrugTable = $('.js-search-drug-table');   //查询药品返回的药品信息
+    var searchDrug = $('#searchDrug');  //查询药品输入框
 
     /* 获取url参数 */
     function getQueryString(e) {
@@ -134,25 +135,39 @@ $(function() {
 scanSucceed();
     //扫描成功后操作
     function scanSucceed(prescCode){
-        var prescCode = '6937748304647';
+        var prescCode = '6937748304647';//6937748304647  4711916012686  693342672753  6954697200301  9787302308812  6955715322333
         if(scanFlag){  //此时是扫描药单
             $.ajax({
                type: 'post',
                url: '/checkdrug/check/checkdrugList.do?checkdrug_id='+prescCode,
                data: {},
                success: function(data){
+                   scanFlag = !scanFlag;
                    scanPrescHandler(data,prescCode);
                },
                error: function() {
-                  alert("请求异常！");
+                  alert("未找到此药单信息！");
                 }
             });
-            scanFlag = !scanFlag;
             prescInfo.show();
         }else{  //此时是扫描药品
             alert("验证药品");
-        }
+            // var prescCode = '6955715322333';
+            var notFinded = true;
+            var tr = druInfoTable.find('tr');
+            for(var i = 1 ; i <tr.length ; i++){
+                if($(tr[i]).find('td').eq(1).html() == prescCode){
+                    $(tr[i]).html('');
+                    notFinded = !notFinded;
+                    return;
+                }
+            };
+            if(notFinded){
+                alert('在药单里未找到此药品！');
+            };
+        };
     };
+    //扫描药单号成功 处理函数
     function scanPrescHandler(data,prescCode){
         var prescData = JSON.parse(data);
         var tr = '';
@@ -164,9 +179,16 @@ scanSucceed();
         $('.js-doctors-sex').html(prescData.doctorInfo.doctors_sex);
         $('.js-doctors-departments').html(prescData.doctorInfo.doctors_departments);
         prescNum = prescData.checkdrugInfo.length;
-        for(var i = 0 ; i < prescNum ; i++){
-            tr += "<tr><td>"+prescData.checkdrugInfo[i].d_name+"</td><td>"+prescData.checkdrugInfo[i].d_id+"</td><td>"+prescData.checkdrugInfo[i].d_specification+"</td><td>"+prescData.checkdrugInfo[i].checkdrug_num+"</td><td>"+prescData.checkdrugInfo[i].d_manufacturer+"</td><td><a href='javascript:void(0);' class='js-pass'>"+"通过"+"</a> <a href='javascript:void(0);' class='js-search' data-toggle='modal' data-target='#myModal'>"+"查询"+"</a></td><tr>";
-        };
+        if(prescNum <= 5){
+            for(var i = 0 ; i < prescNum ; i++){
+                tr += "<tr><td>"+prescData.checkdrugInfo[i].d_name+"</td><td>"+prescData.checkdrugInfo[i].d_id+"</td><td>"+prescData.checkdrugInfo[i].d_specification+"</td><td>"+prescData.checkdrugInfo[i].checkdrug_num+"</td><td>"+prescData.checkdrugInfo[i].d_manufacturer+"</td><td><a href='javascript:void(0);' class='js-pass'>"+"通过"+"</a> <a href='javascript:void(0);' class='js-search' data-toggle='modal' data-target='#myModal'>"+"查询"+"</a></td></tr>";
+            };
+        }else{
+           for(var i = 0 ; i < prescNum ; i++){
+                tr1[i] += "<tr><td>"+prescData.checkdrugInfo[i].d_name+"</td><td>"+prescData.checkdrugInfo[i].d_id+"</td><td>"+prescData.checkdrugInfo[i].d_specification+"</td><td>"+prescData.checkdrugInfo[i].checkdrug_num+"</td><td>"+prescData.checkdrugInfo[i].d_manufacturer+"</td><td><a href='javascript:void(0);' class='js-pass'>"+"通过"+"</a> <a href='javascript:void(0);' class='js-search' data-toggle='modal' data-target='#myModal'>"+"查询"+"</a></td></tr>";
+            };
+            tr = tr1[0]+tr1[1]+ tr1[2]+tr1[3]+tr1[4];
+        }; 
         druInfoTable.append(tr);
     }
 
@@ -202,9 +224,13 @@ scanSucceed();
         var tr = '';
         drugNum = drugData.length;
         $('.js-total').html(drugNum);
-        for(var i = 0 ; i < drugNum ; i++){
-            tr += '<tr><td>'+drugData[i].d_name+'</td><td>'+drugData[i].d_id+'</td><td>'+drugData[i].d_specification+'</td><td>'+drugData[i].d_num+'</td><td>'+drugData[i].d_manufacturer+'</td><td>'+drugData[i].d_coordinate+'</td><td>'+drugData[i].date+'</td><tr>';
-        };
+        if(drugNum == 0){
+            tr += "<tr><td colspan='7'>"+"未查询到此药品信息！"+"</td></tr>" ;
+        }else{
+            for(var i = 0 ; i < drugNum ; i++){
+                tr += "<tr><td>"+drugData[i].d_name+"</td><td>"+drugData[i].d_id+"</td><td>"+drugData[i].d_specification+"</td><td>"+drugData[i].d_num+"</td><td>"+drugData[i].d_manufacturer+"</td><td>"+drugData[i].d_coordinate+"</td><td>"+drugData[i].date+"</td></tr>";
+            };
+        }
         searchDrugTable.append(tr);
     };
 
@@ -227,7 +253,7 @@ scanSucceed();
             url: '/checkdrug/check/returnCheck.do?result='+testResult,
             data: {},
             success:function(){
-                alert("后台已更新！");
+                // alert("后台已更新！");
                 window.location.reload();
             },
            error: function() {
@@ -238,18 +264,24 @@ scanSucceed();
 
     //药单药品分页
     $("#paging1").sharkPager({
-        totalPages: prescNum,
+        totalPages: 7,//Math.ceil(prescNum/5),
         page: 1,
         lg : 'zh_CN',
         segmentSize : 3,
-        callback: function(p) {
+        callback: function (p) {
             console.log(p);
+            var tr = '';
+            for(var i = 0 ; i < 5 ; i++){
+                tr += tr1[p-1+i]; 
+            }
+            druInfoTable.find('tr td').parent().html('');
+            druInfoTable.append(tr);
         }
     });
 
     //查询药品分页
     $("#paging2").sharkPager({
-        totalPages: drugNum,
+        totalPages: Math.ceil(drugNum/5),
         page: 1,
         lg : 'zh_CN',
         segmentSize : 5,
