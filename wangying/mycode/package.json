@@ -12,9 +12,8 @@
     "bootstrap": "^3.3.5",
     "jquery": "^2.2.3",
     "quagga": "^0.10.0",
+    "toastr": "^2.1.2",
     "webpack": "^1.12.14"
   },
-  "devDependencies": {
-    
-  }
+  "devDependencies": {}
 }

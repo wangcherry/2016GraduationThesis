@@ -1155,6 +1155,16 @@ if (typeof jQuery === 'undefined') {
       paddingLeft:  !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : '',
       paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : ''
     })
+
+    // 弹出框居中
+    var $modal_dialog = $(this.$element[0]).find('.modal-dialog');
+    //获取可视窗口的高度
+    var clientHeight = (document.body.clientHeight < document.documentElement.clientHeight) ? document.body.clientHeight: document.documentElement.clientHeight;  
+    //得到dialog的高度
+    var dialogHeight = $modal_dialog.height();
+    //计算出距离顶部的高度
+    var m_top = (clientHeight - dialogHeight)/2;
+    $modal_dialog.css({'margin': m_top + 'px auto'});
   }
 
   Modal.prototype.resetAdjustments = function () {
