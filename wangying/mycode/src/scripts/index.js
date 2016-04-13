@@ -106,7 +106,7 @@ $(function() {
     var scanFlag = true;   //true代表处于扫药单状态
     var testFlag = false;   //false代表药单没有通过验证
     var tr1 = [], tr2 = []; //用于分页的数据显示
-    var prescNum;
+    var prescNum;   //用于药单里的药品分页，解决点击通过时重新分页
     var prescInfo = $('.js-presc-info');   //显示药单所有信息
     var druInfoTable = $('.js-drug-info-table');  //药单里的药品信息
     var searchDrugTable = $('.js-search-drug-table');   //查询药品返回的药品信息
