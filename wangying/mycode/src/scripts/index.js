@@ -106,7 +106,7 @@ $(function() {
     var scanFlag = true;   //true代表处于扫药单状态
     var testFlag = false;   //false代表药单没有通过验证
     var tr1 = [], tr2 = []; //用于分页的数据显示
-    var drugNum;
+    var prescNum;
     var prescInfo = $('.js-presc-info');   //显示药单所有信息
     var druInfoTable = $('.js-drug-info-table');  //药单里的药品信息
     var searchDrugTable = $('.js-search-drug-table');   //查询药品返回的药品信息
@@ -134,10 +134,10 @@ $(function() {
     };
     getUsername();
 
-scanSucceed();
+// scanSucceed();
     //扫描成功后操作
     function scanSucceed(prescCode){
-        var prescCode = '6937748304647';//6937748304647  4711916012686  693342672753  6954697200301  9787302308812  6955715322333
+        // var prescCode = '6937748304647';//6937748304647  4711916012686  693342672753  6954697200301  9787302308812  6955715322333
         if(scanFlag){  //此时是扫描药单
             $.ajax({
                type: 'post',
@@ -202,9 +202,6 @@ scanSucceed();
                 console.log(p);
                 var tr = '';
                 for(var i = 0 ; i < 5 ; i++){
-                    if(tr.search(/undefined/)){
-                        return;
-                    };
                     tr += tr1[(p-1)*5+i];
                 }
                 druInfoTable.find('tr td').parent().html('');
@@ -244,7 +241,7 @@ scanSucceed();
     function successHandler(data){
         var drugData = JSON.parse(data);
         var tr = '';
-        drugNum = drugData.length;
+        var drugNum = drugData.length;
         $('.js-total').html(drugNum);
         if(drugNum == 0){
             tr += '<tr><td colspan="7">'+'未查询到此药品信息！'+'</td></tr>' ;
@@ -265,9 +262,6 @@ scanSucceed();
                 console.log(p);
                 var tr = '';
                 for(var i = 0 ; i < 5 ; i++){
-                    if(tr.search(/undefined/)){
-                        return;
-                    };
                     tr += tr1[(p-1)*5+i];
                 }
                 searchDrugTable.find('tr td').parent().html('');
@@ -314,7 +308,7 @@ scanSucceed();
             var thisTrIndex = thisTr.index();
             thisTr.html('');
             tr1.splice(thisTrIndex,1);
-            drugNum = drugNum-1;
+            prescNum = prescNum-1;
             //药单药品分页
             $("#paging1").sharkPager({
                 totalPages: Math.ceil(prescNum/5),
@@ -325,11 +319,10 @@ scanSucceed();
                     console.log(p);
                     var tr = '';
                     for(var i = 0 ; i < 5 ; i++){
-                    if(tr.search(/undefined/)){
-                        return;
-                    };
-                        tr += tr1[(p-1)*5+i];
-                    }
+                        if(tr.search(/undefined/) != -1){
+                            return;
+                        };
+                        tr += tr1[(p-1)*5+i];                    }
                     druInfoTable.find('tr td').parent().html('');
                     druInfoTable.append(tr);
                 }
