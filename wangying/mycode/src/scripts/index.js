@@ -126,18 +126,20 @@ $(function() {
     function getUsername() {
         var username =  getQueryString('username');
         if(username == ''){
-            alert('您还未登录，请先登录！');
-            window.location.href = 'login.html';
+            toastr.warning("您还未登录，请先登录！");
+                setTimeout(function () {
+                    window.location.href = 'login.html';
+                },1000);
         }else{
             $('.js-username').html(username);
         }
     };
     getUsername();
 
-// scanSucceed();
+scanSucceed();
     //扫描成功后操作
     function scanSucceed(prescCode){
-        // var prescCode = '6937748304647';//6937748304647  4711916012686  693342672753  6954697200301  9787302308812  6955715322333
+        var prescCode = '6937748304647';//6937748304647  4711916012686  693342672753  6954697200301  9787302308812  6955715322333
         if(scanFlag){  //此时是扫描药单
             $.ajax({
                type: 'post',
@@ -159,8 +161,15 @@ $(function() {
             var tr = druInfoTable.find('tr');
             for(var i = 1 ; i <tr.length ; i++){
                 if($(tr[i]).find('td').eq(1).html() == prescCode){
-                    $(tr[i]).html('');
-                    notFinded = !notFinded;
+                    var d_num = tr[i].find('td').eq(3);
+                    if(d_num.html() == 1){
+                        $(tr[i]).html('');
+                        notFinded = !notFinded;
+                    }else{
+                        d_num -= d_num;
+                        toastr.warning("该药还需数量："+d_num);
+                        d_num.html(d_num);
+                    }
                     return;
                 }
             };

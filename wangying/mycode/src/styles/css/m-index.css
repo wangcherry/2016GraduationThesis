@@ -48,6 +48,7 @@
 }
 .m-banner-index .login{
 	padding-top: .5em;
+  padding-left: 0;
 }
 .m-banner-index header .login a{
 	color: #ffffff;
