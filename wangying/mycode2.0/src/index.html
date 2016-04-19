@@ -40,20 +40,8 @@
 				</div>
 			</header>
 			<!-- //header -->
-			<!-- section  -->
-			<section class="text-center scan-warp js-scan-warp">
-				<div class="js-controls">
-					<button type="button" class="btn btn-info js-start ">扫一扫</button>&nbsp;&nbsp;&nbsp;
-					<button type="button" class="btn btn-info js-stop">Stop</button>
-				</div>
-				<span class="js-code"></span>
-				<div class="result-strip js-result-strip">
-					<ul class="thumbnails"></ul>
-				</div>
-				<div id="interactive" class="center-block viewport"></div>
-			</section>
-			<!-- //section -->
 			<!-- section : 扫描药单后显示 -->
+			<div class="text-center scan-code-warp"><input type="text" class="js-scan-code" /></div>
 			<section class="presc-info js-presc-info">
 				<table class="table table-noborder fontsize patient-info">
 					<caption class="text-left capt-color">病人信息：</caption>
@@ -97,9 +85,6 @@
 				<ul id="paging1" class="pull-right pagination pagination-sm"></ul>
 				<div class="clearfix"></div>
 				<div class="capt-color capt-top">验证结果：<span class="test-result js-test-result">还有药品没有通过验证，暂时不可发药！</span></div>
-				<div class="text-center result-btn">
-					<button type="button" class="btn btn-info js-result-btn">提交验证</button>
-				</div>
 			</section>
 			<!-- //section -->
 		</div>
@@ -132,7 +117,7 @@
 							<div class="input-group">
 								<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
 								<input type="text" class="form-control" id="searchDrug" placeholder="请输入需要查询的药品">
-								<div class="input-group-addon js-search-drug">查询</div>
+								<div class="input-group-addon search-drug js-search-drug">查询</div>
 							</div>
 						</div>
 						<!-- <button type="button" class="btn btn-primary js-search-drug"> 查询 </button> -->
