@@ -66,19 +66,9 @@ $(function() {
             });
         }else if(prescCode != '6933426727753'){  //此时是扫描药品
             scanDrugHander(prescCode);
-        }else if(prescCode == '6933426727753'){   //提交药单验证结果
-            if(testFlag){
-                toastr.success('此药单通过了验证，请发药！');
-                setTimeout(function () {
-                    testResultHandler(testFlag);
-                },1000);
-            }else{
-                toastr.warning('此药单没有通过验证，请勿发药！');
-                setTimeout(function () {
-                    testResultHandler(testFlag);
-                },1000);
-            };
-        }
+        }else if(prescCode == '6933426727753'){   //此时是提交药单验证结果
+            scanSubmitHandler();
+        };
     };
 
     //扫描药单号成功 处理函数
@@ -235,6 +225,21 @@ $(function() {
             testResultText.html('药品验证通过，可发药！');
             testFlag = !testFlag;
         }
+    };
+
+    //扫描验证结果 处理函数
+    function scanSubmitHandler(){
+        if(testFlag){
+            toastr.success('此药单通过了验证，请发药！');
+            setTimeout(function () {
+                testResultHandler(testFlag);
+            },1000);
+        }else{
+            toastr.warning('此药单没有通过验证，请勿发药！');
+            setTimeout(function () {
+                testResultHandler(testFlag);
+            },1000);
+        };
     };
 
     //返回验证结果函数
