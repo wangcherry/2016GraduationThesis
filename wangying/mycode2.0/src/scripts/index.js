@@ -215,6 +215,15 @@ $(function() {
         searchDrugTable.append(tr);
     };
 
+    // 点击 查询 响应事件
+    druInfoTable.on("click", ".js-search", function(e) {
+        var searchDrugName = $(this).parent().siblings().eq(0).html();
+        searchDrug.val(searchDrugName);
+        searchDrugHandler();
+    });
+    // 点击 查询 响应事件
+    $("#myModal").on("click", ".js-search-drug",searchDrugHandler);
+
     //验证结果显示函数
     function testResultTip(){
         var testResultFalg = druInfoTable.find('td').length;
@@ -222,12 +231,12 @@ $(function() {
         if(testResultFalg != 0){
             testResultText.html('还有药品未通过验证，暂时不可发药！');
         }else{
-            testResultText.html('药品验证通过，可发药！');
+            testResultText.html('药单验证通过，可发药！');
             testFlag = !testFlag;
         }
     };
 
-    //扫描验证结果 处理函数
+    //扫描验证结果成功 处理函数
     function scanSubmitHandler(){
         if(testFlag){
             toastr.success('此药单通过了验证，请发药！');
@@ -260,13 +269,5 @@ $(function() {
         })
     };
 
-    // 点击 查询 响应事件
-    druInfoTable.on("click", ".js-search", function(e) {
-        var searchDrugName = $(this).parent().siblings().eq(0).html();
-        searchDrug.val(searchDrugName);
-        searchDrugHandler();
-    });
-    // 点击 查询 响应事件
-    $("#myModal").on("click", ".js-search-drug",searchDrugHandler);
 
 });
