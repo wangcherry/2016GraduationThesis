@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>demo</title>
+	<link rel="stylesheet" type="text/css" href="styles/css/demo1.css">
+</head>
+<body>
+    <section class="text-center scan-warp js-scan-warp">
+        <div class="js-controls">
+            <button type="button" class="btn btn-info js-start ">扫一扫</button>&nbsp;&nbsp;&nbsp;
+            <button type="button" class="btn btn-info js-stop">Stop</button>
+        </div>
+        <span class="js-code"></span>
+        <div class="result-strip js-result-strip">
+            <ul class="thumbnails"></ul>
+        </div>
+        <div id="interactive" class="center-block viewport"></div>
+    </section>
+
+    <script type="text/javascript" src="scripts/jquery-2.2.2.js"></script>
+    <!-- <script type="text/javascript" src="/index.bundle.js"></script> -->
+    <script src="http://localhost:8080/webpack-dev-server.js"></script>
+    <script type="text/javascript">
+    var Quagga = require('Quagga');
+    $(function() {
+        var App = {
+            init : function() {
+                var self = this;
+                Quagga.init(this.state, function(err) {
+                    if (err) {
+                        return self.handleError(err);
+                    }
+                    $("span.js-code").html('');
+                    App.attachListeners();
+                    Quagga.start();
+                });
+            },
+            handleError: function(err) {
+                console.log(err);
+            },
+            attachListeners: function() {
+                var self = this;
+                $(".js-controls").on("click", "button.js-stop", App.stopHandler);
+            },
+            stopHandler: function(e) {
+                e.preventDefault();
+                Quagga.stop();
+                $("span.js-code").html('');
+                $("#interactive").hide();
+            },
+            state: {
+                inputStream: {
+                    type : "LiveStream",
+                    constraints: {
+                        width: 640,
+                        height: 480,
+                        facing: "environment"
+                    }
+                },
+                locator: {
+                    patchSize: "medium",
+                    halfSample: true
+                },
+                numOfWorkers: 4,
+                decoder: {
+                    readers : ["ean_reader"]
+                },
+                locate: true
+            },
+            lastResult : null
+        };
+
+        //点击扫一扫处理函数
+        $(".js-controls").on("click", "button.js-start", startHandler);
+        function startHandler(e) {
+            App.init();
+        };
+
+        //扫描进程处理函数
+        Quagga.onProcessed(function(result) {
+            var drawingCtx = Quagga.canvas.ctx.overlay,
+                drawingCanvas = Quagga.canvas.dom.overlay;
+
+            if (result) {
+                if (result.boxes) {
+                    drawingCtx.clearRect(0, 0, parseInt(drawingCanvas.getAttribute("width")), parseInt(drawingCanvas.getAttribute("height")));
+                    result.boxes.filter(function (box) {
+                        return box !== result.box;
+                    }).forEach(function (box) {
+                        Quagga.ImageDebug.drawPath(box, {x: 0, y: 1}, drawingCtx, {color: "green", lineWidth: 2});
+                    });
+                }
+
+                if (result.box) {
+                    Quagga.ImageDebug.drawPath(result.box, {x: 0, y: 1}, drawingCtx, {color: "#00F", lineWidth: 2});
+                }
+
+                if (result.codeResult && result.codeResult.code) {
+                    Quagga.ImageDebug.drawPath(result.line, {x: 'x', y: 'y'}, drawingCtx, {color: 'red', lineWidth: 3});
+                }
+            }
+        });
+
+        //扫描成功后处理函数
+        Quagga.onDetected(function(result) {
+            var code = result.codeResult.code;
+
+            if (App.lastResult !== code) {
+                App.lastResult = code;
+                //此处注释暂时不可删除 解除注释可以看到打印的图片和条形码号
+                // var $node = null, canvas = Quagga.canvas.dom.image;
+                // $node = $('<li><div class="thumbnail"><div class="imgWrapper"><img /></div><div class="caption"><h4 class="code"></h4></div></div></li>');
+                // $node.find("img").attr("src", canvas.toDataURL());
+                // $node.find("h4.code").html(code);
+                // $(".js-result-strip ul.thumbnails").prepend($node);
+                $("span.js-code").html(code);
+            }
+        });
+    });
+    </script>
+</body>
+</html>
