@@ -215,14 +215,20 @@ $(function() {
         searchDrugTable.append(tr);
     };
 
-    // 点击 查询 响应事件
+    // 点击药单里的 查询 响应事件
     druInfoTable.on("click", ".js-search", function(e) {
         var searchDrugName = $(this).parent().siblings().eq(0).html();
         searchDrug.val(searchDrugName);
         searchDrugHandler();
     });
-    // 点击 查询 响应事件
+    // 点击 查询图标 响应事件
     $("#myModal").on("click", ".js-search-drug",searchDrugHandler);
+    // 按回车键 查询 响应事件
+    $("#myModal").on("keydown", "#searchDrug",function (e) {
+        if(e.which == 13){
+            searchDrugHandler();
+        };
+    });
 
     //验证结果显示函数
     function testResultTip(){
