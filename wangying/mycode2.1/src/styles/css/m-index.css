@@ -1,0 +1,94 @@
+/**
+*author wangying
+*2016/04/05
+**/
+@charset "UTF-8";
+
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+	header{
+		margin-bottom: 2em;
+	}
+	section{
+		margin-bottom: 2em;
+	}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+  header{
+    margin-bottom: 2em;
+  }
+  section{
+    margin-bottom: 2em;
+  }
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+  header{
+    margin-bottom: 4em;
+  }
+  section{
+    margin-bottom: 4em;
+  }
+}
+
+/* 超大屏幕（大桌面显示器，大于等于 1500px） */
+@media (min-width: 1500px) {
+  header{
+    margin-bottom: 6em;
+  }
+  section{
+    margin-bottom: 6em;
+  }
+}
+.banner{
+  background-color: #9DC1D9;
+}
+.m-banner-index .login{
+	padding-top: .5em;
+  padding-left: 0;
+}
+.m-banner-index header .login a{
+	color: #ffffff;
+}
+.m-banner-index header .login a:hover{
+	text-decoration: underline;
+}
+
+.m-banner-index .scan-code-warp{
+  margin-bottom: 20px;
+}
+
+.m-banner-index section.presc-info{
+  display: none;
+}
+.m-banner-index section .table-noborder td{
+	border-top: none;
+}
+.m-banner-index section .fontsize td{
+  padding: 2px 0;
+}
+.m-banner-index section .capt-color{
+	color: #0c557f;
+}
+.m-banner-index section .capt-bottom{
+	margin-bottom: .5em;
+}
+.m-banner-index section .capt-top{
+  margin: 1em 0;
+}
+.m-banner-index section .test-result{
+  color: red;
+}
+
+.search-drug{
+  cursor: pointer;
+}
+.search-drug-form{
+  margin-bottom: .7em;
+}
+.pagination{
+  margin: 0;
+}

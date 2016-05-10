@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>取药验证系统-首页</title>
+	<!-- for-mobile-apps -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="application/x-javascript">
+		addEventListener("load", function() {
+			setTimeout(hideURLbar, 0);
+		}, false);
+		function hideURLbar(){
+			window.scrollTo(0,1);
+		}
+	</script>
+	<!-- //for-mobile-apps -->
+	<link rel="stylesheet" type="text/css" href="styles/css/bootstrap.css" media="all">
+	<!-- for-font-family -->
+	<!-- //for-model-alert -->
+	<link rel="stylesheet" type="text/css" href="styles/css/toastr.css" media="all">
+	<!-- for-model-alert -->
+	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Archivo+Narrow:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+	<!-- //for-font-family -->
+	<link rel="stylesheet" type="text/css" href="styles/css/main.css">
+	<link rel="stylesheet" type="text/css" href="styles/css/m-index.css">
+</head>
+<body>
+	<!-- banner -->
+	<div class="m-banner-index banner">
+		<!-- //container -->
+		<div class="container">
+			<!-- header -->
+			<header class="row">
+				<div class="col-xs-6 pull-left">
+					<img src="images/logo.jpg" class="img-responsive" alt="验证取药" title="验证取药">
+				</div>
+				<div class="col-xs-6 pull-right text-right login">
+					<span class="js-username"></span>&nbsp;您好，<a href="login.html">退出登录</a>
+				</div>
+			</header>
+			<!-- //header -->
+			<!-- section : 扫描药单后显示 -->
+			<div class="text-center scan-code-warp"><input type="text" class="js-scan-code" /></div>
+			<section class="presc-info js-presc-info">
+				<table class="table table-noborder fontsize patient-info">
+					<caption class="text-left capt-color">病人信息：</caption>
+					<tr>
+						<td class="text-right">姓名：</td>
+						<td class="js-u-name"></td>
+						<td class="text-right">性别：</td>
+						<td class="js-u-sex"></td>
+					</tr>
+					<tr>
+						<td class="text-right">年龄：</td>
+						<td class="js-u-age"></td>
+						<td class="text-right">药单号：</td>
+						<td class="js-u-presc"></td>
+					</tr>
+				</table>
+				<table class="table table-noborder fontsize doctors-info">
+					<caption class="text-left capt-color">医生信息：</caption>
+					<tr>
+						<td class="text-right">姓名：</td>
+						<td class="js-doctors-name"></td>
+						<td class="text-right">性别：</td>
+						<td class="js-doctors-sex"></td>
+						<td class="text-right">科室：</td>
+						<td class="js-doctors-departments"></td>
+					</tr>
+				</table>
+				<div class="capt-color capt-bottom">药单信息：</div>
+				<div class="table-responsive">
+					<table class="text-center table table-striped table-bordered js-drug-info-table">
+						<tr>
+							<th class="text-center">药名名称</th>
+							<th class="text-center">药品条形码</th>
+							<th class="text-center">药品规格</th>
+							<th class="text-center">数量</th>
+							<th class="text-center">药品厂家</th>
+							<th class="text-center">操作</th>
+						</tr>
+					</table>
+				</div>
+				<ul id="paging1" class="pull-right pagination pagination-sm"></ul>
+				<div class="clearfix"></div>
+				<div class="capt-color capt-top">验证结果：<span class="test-result js-test-result">还有药品没有通过验证，暂时不可发药！</span></div>
+			</section>
+			<!-- //section -->
+		</div>
+		<!-- //container -->
+	</div>
+	<!-- //banner -->
+	<!-- about -->
+	<div class="text-center about">
+		<div class="container">
+			<h3>关于验证取药系统</h3>
+			<p>本系统通过扫描药单条形码获取病人的药单信息，扫描药品条形码，可获取到药品信息，与药单上的药品进行验证，达到零取错药率。</p>
+		</div>
+	</div>
+	<!-- //about -->
+	<!-- footer -->
+	<footer class="text-center">基于条形码的验证取药系统&nbsp;by&nbsp;wangying</footer>
+	<!-- //footer -->
+	<!-- modal 点击查询之后显示 -->
+	<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">查询到 <span class="js-total"></span> 条信息</h4>
+				</div>
+				<div class="modal-body clearfix">
+					<form class="form-inline text-center search-drug-form" onsubmit="return false;">
+						<div class="form-group">
+							<label class="sr-only" for="searchDrug">查找药品</label>
+							<div class="input-group">
+								<div class="input-group-addon"><span class="glyphicon glyphicon-search"></span></div>
+								<input type="text" class="form-control" id="searchDrug" placeholder="请输入需要查询的药品">
+								<div class="input-group-addon search-drug js-search-drug">查询</div>
+							</div>
+						</div>
+					</form>
+					<div class="table-responsive">
+						<table class="text-center table table-striped table-bordered js-search-drug-table">
+							<tr>
+								<th class="text-center">药名名称</th>
+								<th class="text-center">药品条形码</th>
+								<th class="text-center">药品规格</th>
+								<th class="text-center">库存量</th>
+								<th class="text-center">药品厂家</th>
+								<th class="text-center">药品位置</th>
+								<th class="text-center">录入日期</th>
+							</tr>
+						</table>
+					</div>
+					<ul id="paging2" class="pull-right pagination pagination-sm"></ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- //modal -->
+	<script type="text/javascript" src="scripts/jquery-2.2.2.js"></script>
+	<script type="text/javascript" src="scripts/bootstrap.js"></script>
+	<script type="text/javascript" src="scripts/toastr.js"></script>
+    <script type="text/javascript" src="scripts/shark-pager.js"></script>
+	<script type="text/javascript" src="scripts/index.js"></script>
+</body>
+</html>

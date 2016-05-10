@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+body{
+	padding: 0;
+	margin: 0;
+}
+a,button{
+	outline: none;
+}
+
+.banner{
+	background:url(../../images/bgimg.jpg) no-repeat top center;
+}
+
+header{
+	margin-bottom: 4em;
+}
+
+section{
+	background-color: #fff;
+	padding: .5em;
+	margin-bottom: 4em;
+}
+
+.about {
+	padding: 1em 0;
+}
+.about h3 {
+    color: #F26F62; 
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+footer{
+	padding:2em 0;
+	background-color: #02557f;
+	color: #ffffff;
+	font-size: 1em;
+	opacity: 0.9;
+}
