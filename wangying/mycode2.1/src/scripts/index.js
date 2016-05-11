@@ -49,7 +49,7 @@ $(function() {
     })
     //扫描成功后操作
     function scanSucceed(){
-        var prescCode = scanCode.val();//6937748304647  4711916012686  693342672753  6954697200301  9787302308812  6955715322333
+        var prescCode = scanCode.val();
         if(scanFlag){  //此时是扫描药单
             $.ajax({
                type: 'post',
@@ -61,7 +61,6 @@ $(function() {
                    prescInfo.show();
                },
                error: function() {
-                  // alert("未找到此药单信息！");
                    toastr.error("未找到此药单信息！");
                 }
             });
@@ -153,7 +152,6 @@ $(function() {
             }
         };
         if(notFinded){
-            // alert("在药单里未找到此药品！");
             toastr.error("在药单里未找到此药品！");
         };
     }
@@ -179,7 +177,6 @@ $(function() {
                    successHandler(data);
                },
                error: function() {
-                   // alert("请求异常！");
                    toastr.error("请求异常！");
                 }
             });
@@ -196,7 +193,7 @@ $(function() {
         }else{
             for(var i = 0 ; i < drugNum ; i++){
                 var d_coordinate = drugData[i].d_coordinate.split('-');
-                tr += '<tr><td>'+drugData[i].d_name+'</td><td>'+drugData[i].d_id+'</td><td>'+drugData[i].d_specification+'</td><td>'+drugData[i].d_num+'</td><td>'+drugData[i].d_manufacturer+'</td><td>'+d_coordinate[0]+'号药房-'+d_coordinate[1]+'号柜-'+d_coordinate[2]+'排'+d_coordinate[3]+'列'+'</td><td>'+drugData[i].date+'</td></tr>';
+                tr += '<tr><td>'+drugData[i].d_name+'</td><td>'+drugData[i].d_id+'</td><td>'+drugData[i].d_specification+'</td><td>'+drugData[i].d_num+'</td><td>'+drugData[i].d_manufacturer+'</td><td>'+d_coordinate[0]+'号药房-'+d_coordinate[1]+'号柜-'+d_coordinate[2]+'排'+d_coordinate[3]+'列'+'</td><td>'+drugData[i].d_date+'</td></tr>';
             };
         };
 
@@ -273,7 +270,6 @@ $(function() {
                 },1000);
             },
            error: function() {
-               // alert("请求异常！");
                toastr.error("请求异常！");
             }
         })
