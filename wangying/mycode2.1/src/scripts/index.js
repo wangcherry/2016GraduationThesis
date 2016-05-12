@@ -64,9 +64,9 @@ $(function() {
                    toastr.error("未找到此药单信息！");
                 }
             });
-        }else if(prescCode != '6933426727753'){  //此时是扫描药品
+        }else if(prescCode != '0123456789'){  //此时是扫描药品
             scanDrugHander(prescCode);
-        }else if(prescCode == '6933426727753'){   //此时是提交药单验证结果
+        }else if(prescCode == '0123456789'){   //此时是提交药单验证结果
             scanSubmitHandler();
         };
     };

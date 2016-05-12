@@ -33,7 +33,7 @@ $(function(){
 			        if(data == 0){
 			          	window.location.href = 'index.html?username='+username;
 			        }else if(data == 1){
-				        errorMsg.css('color','red').html('用户名或密码错误');
+				        errorMsg.css('color','red').html('密码错误');
 			        }else if(data == 2){
 				        errorMsg.css('color','red').html('用户名不存在');
 			        }
