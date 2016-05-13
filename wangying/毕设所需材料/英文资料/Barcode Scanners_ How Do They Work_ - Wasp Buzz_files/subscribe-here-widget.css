@@ -1,0 +1,63 @@
+
+.feedemail-form{
+	background-image:url('images/email-icon-28x50.png');
+	background-repeat:no-repeat;
+	background-position: 5px 7px;	
+	border:1px dashed #8DC63F;
+	padding:3px;
+	text-align:center;
+	padding-left:41px;
+}
+
+.feedemail-label{
+	color: #8DC63F;
+	font-family:Arial,Verdana,Helvetica,sans-serif;
+	font-size:12px;
+	font-weight:bold;
+}
+
+.feedemail-input{
+	border: 1px solid #777; 
+	color: #8DC63F;
+	width: 140px;
+	background-color: #444;
+	width:140px;
+	margin-top:5px;
+	margin-bottom:3px;
+}
+.feedemail-input:hover{
+	border: 1px solid #8DC63F; 
+	background-color:#111;
+}
+
+.feedemail-button{
+	background-color: #8DC63F;
+	border:1px solid #8DC63F;
+}
+
+.feedemail-footer{
+	font-size:9px;
+	color:#8F8F8F;
+}
+
+.rss-widget
+{
+	background-image:url('images/feed-icon-28x28.png');
+	background-repeat:no-repeat;
+	background-position: 5px 5px;
+	padding-left:41px;
+	border:1px dashed darkorange;
+	color:darkorange;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-right:3px;
+	margin-bottom:3px;
+	text-align:center;
+	height:32px;
+	font-size:25px;
+}
+.rss-widget:hover
+{
+	border:1px solid darkorange;
+	text-decoration:underline;
+} 

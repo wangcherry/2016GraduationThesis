@@ -1,0 +1,39 @@
+h1            { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:15pt; color:#000090; }
+h2            { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:12pt; color:#000090; }
+h3            { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:10pt; color:#000090; }
+h4            { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000080; }
+h5            { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:9pt;  color:#000090; }
+h6            { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:9pt;  color:#000000; }
+b             { font-weight:bold;}
+p             { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000000; text-indent:1em; margin-left:1em; margin-right:1em; }
+p.sub         { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:9pt;  color:#000000; text-indent:0em; margin-left:1em; margin-right:1em; }
+blockquote    { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000000; }
+body, table   { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000000; }
+p.xTESTTEST   { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:10pt; color:#000090; text-indent:0em; margin-left:0em; margin-right:0em; }
+td, tr        { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000000; }
+td.hw, tr.hw  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:10pt; color:#000000; }
+td.h1, tr.h1  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:15pt; color:#000090; }
+td.h2, tr.h2  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:12pt; color:#000090; }
+td.h3, tr.h3  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold;   font-size:10pt; color:#000090; }
+td.h4, tr.h4  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000080; }
+td.h5, td.h5  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:9pt;  color:#000090; }
+td.h6, td.h6  { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:9pt;  color:#000000; }
+td.sub, tr.sub { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:9pt;  color:#000000; }
+td.main       { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:8pt; color:#000000; }
+topic         { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:11pt; color:#000000; }
+sub           { font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:normal; font-size:8pt; color:#000000; }
+A:link        { color: #0000A0 }
+A:visited     { color: #000000 }
+A:active      { color: #FF0000 }
+
+A.menu:link    { color: #F0F0F0; text-decoration: none; font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold; font-size:10pt; }
+A.menu:visited { color: #F0F0F0; text-decoration: none; font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold; font-size:10pt; }
+A.menu:active  { color: #FF0000; text-decoration: none; font-family: Veranda, Arial, Helvetica, sans-serif; font-style:normal; font-weight:bold; font-size:10pt; }
+
+input         { text-decoration: none; color: #000 }
+ul            { list-style: disc }
+ul ul         { list-style: circle }
+ul ul ul      { list-style: square }
+hr            { color: #000; height: 1px }
+code, kbd, tt { font-family: courier, monaco, courier new; color: #666 }
+
