@@ -1,0 +1,15 @@
+{
+  "name": "mycode",
+  "version": "1.0.0",
+  "description": "\"This is my 2016 Graduation ProjectCode\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "wangying",
+  "license": "ISC",
+  "dependencies": {
+    "quagga": "^0.10.0",
+    "webpack": "^1.12.14"
+  }
+}

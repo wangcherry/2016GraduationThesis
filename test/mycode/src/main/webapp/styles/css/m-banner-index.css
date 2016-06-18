@@ -1,0 +1,67 @@
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+	header{
+		margin-bottom: 2em;
+	}
+	section{
+		margin-bottom: 2em;
+	}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+	header{
+		margin-bottom: 4em;
+	}
+	section{
+		margin-bottom: 4em;
+	}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+	header{
+		margin-bottom: 6em;
+	}
+	section{
+		margin-bottom: 6em;
+	}
+}
+
+/* 超大屏幕（大桌面显示器，大于等于 2000px） */
+@media (min-width:2000px){
+	header{
+		margin-bottom: 8em;
+	}
+	section{
+		margin-bottom: 8em;
+	}
+}
+.m-banner-index .login{
+	padding-top: .5em;
+}
+.m-banner-index header .login a{
+	color: #ffffff;
+}
+.m-banner-index header .login a:hover{
+	text-decoration: underline;
+}
+.m-banner-index header .login a.loginBtn{
+	border-color: #0e689d;
+	color: #0e689d;
+}
+.m-banner-index header .login a.loginBtn:hover{
+	text-decoration: none;
+	color: #084b73;
+}
+
+
+.m-banner-index section .table-noborder td{
+	border-top: none;
+}
+.m-banner-index section table .capt-color{
+	color: #0c557f;
+}
+.m-banner-index section table .capt-bottom{
+	margin-bottom: .5em;
+}

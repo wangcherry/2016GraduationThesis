@@ -1,0 +1,51 @@
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+	header{
+		margin-bottom: 6em;
+	}
+	section{
+		margin-bottom: 6em;
+		padding: 2em 0.5em;
+	}
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+	header{
+		margin-bottom: 7em;
+	}
+	section{
+		margin-bottom: 7em;
+		padding: 3em 0.5em;
+	}
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+	header{
+		margin-bottom: 8em;
+	}
+	section{
+		margin-bottom: 8em;
+		padding: 3.5em 0.5em;
+	}
+}
+
+/* 超大屏幕（大桌面显示器，大于等于 1500px） */
+@media (min-width:1500px){
+	header{
+		margin-bottom: 10em;
+	}
+	section{
+		margin-bottom: 10em;
+		padding: 4em 0.5em;
+	}
+}
+.m-banner-login .login-form{
+	margin: 3em;
+	color: #ff7f27;
+	font-size: 1em;
+}
+section .login-form .loginBtn{
+	margin-top: 2em;
+}

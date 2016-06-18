@@ -1,0 +1,55 @@
+/* 小屏幕（平板，大于等于 768px） */
+@media (min-width: 768px) {
+}
+
+/* 中等屏幕（桌面显示器，大于等于 992px） */
+@media (min-width: 992px) {
+}
+
+/* 大屏幕（大桌面显示器，大于等于 1200px） */
+@media (min-width: 1200px) {
+}
+
+/* 超大屏幕（大桌面显示器，大于等于 2000px） */
+@media (min-width:2000px){
+}
+body{
+	padding: 0;
+	margin: 0;
+}
+
+.banner{
+	background:url(../../images/bgimg.jpg) no-repeat top center;
+}
+
+header{
+	margin-bottom: 4em;
+}
+header a.logo{
+	display: inline-block;
+	cursor: default;
+}
+
+section{
+	background-color: #fff;
+	padding: .5em;
+	margin-bottom: 4em;
+}
+
+.about {
+	padding: 1em 0;
+}
+.about h3 {
+    color: #F26F62; 
+    font-family: 'Archivo Narrow', sans-serif;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+footer{
+	padding:2em 0;
+	background-color: #02557f;
+	color: #ffffff;
+	font-size: 1em;
+	opacity: 0.9;
+}
